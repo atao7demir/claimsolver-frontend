@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClaimSolver - Sigorta Hasar Dosya Çözümleri & Rücu Yönetim Danışmanlığı</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            color: #334155;
+            overflow-x: hidden;
+        }
+        
+        .heading-font {
+            font-family: 'Merriweather', serif;
+        }
+        
+        .navy-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+        }
+        
+        .gold-accent {
+            color: #d4af37;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        
+        .logo-box {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.125rem;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0f172a;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #475569;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #0f172a;
+        }
+        
+        .nav-cta {
+            padding: 0.625rem 1.25rem;
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            color: white;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-cta:hover {
+            opacity: 0.9;
+        }
+        
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.5rem;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: background 0.3s;
+        }
+        
+        .lang-btn:hover {
+            background: #f8fafc;
+        }
+        
+        /* Hero */
+        .hero {
+            padding-top: 8rem;
+            padding-bottom: 6rem;
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            color: white;
+        }
+        
+        .hero .container {
+            max-width: 1024px;
+            text-align: center;
+        }
+        
+        .hero-tagline {
+            font-size: 1.125rem;
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .hero-title {
+            font-size: 3.75rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: white;
+            color: #0f172a;
+            text-decoration: none;
+            font-size: 1.125rem;
+            font-weight: bold;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .hero-cta:hover {
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            transform: scale(1.05);
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 768px;
+            margin: 4rem auto 0;
+        }
+        
+        .stat-number {
+            font-size: 1.875rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Section */
+        section {
+            padding: 6rem 0;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #0f172a;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #64748b;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        /* About */
+        .about-intro {
+            font-size: 1.25rem;
+            color: #64748b;
+            text-align: center;
+            max-width: 768px;
+            margin: 0 auto 3rem;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .about-text {
+            font-size: 1.125rem;
+            line-height: 1.75;
+            color: #475569;
+        }
+        
+        .ai-box {
+            background: linear-gradient(to right, #eff6ff, #f8fafc);
+            padding: 2rem;
+            border-radius: 1rem;
+            border-left: 4px solid #1e3a8a;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .ai-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: #1e3a8a;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: white;
+            font-size: 1.75rem;
+        }
+        
+        .ai-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+        }
+        
+        .ai-text {
+            font-size: 1.125rem;
+            line-height: 1.75;
+            color: #475569;
+        }
+        
+        /* Services */
+        .services {
+            background: #f8fafc;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border-top: 4px solid #1e3a8a;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+        
+        .service-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+        
+        .service-desc {
+            color: #64748b;
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-ai {
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.875rem;
+            color: #1e3a8a;
+            font-weight: 600;
+        }
+        
+        /* Contact */
+        .contact-form {
+            max-width: 768px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            border-top: 4px solid #1e3a8a;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #1e3a8a;
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+        
+        textarea.form-input {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .file-upload {
+            border: 2px dashed #cbd5e1;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .file-upload:hover {
+            border-color: #1e3a8a;
+            background: #f8fafc;
+        }
+        
+        .kvkk-box {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .kvkk-label {
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+            cursor: pointer;
+        }
+        
+        .kvkk-checkbox {
+            margin-top: 0.25rem;
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        
+        .kvkk-link {
+            color: #1e3a8a;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .kvkk-link:hover {
+            text-decoration: underline;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            color: white;
+            font-size: 1.125rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+        
+        .email-contact {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #f8fafc;
+            color: #475569;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .email-link:hover {
+            background: #e2e8f0;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-title {
+            font-size: 1.125rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-text {
+            color: #cbd5e1;
+            line-height: 1.75;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+            color: #cbd5e1;
+        }
+        
+        .footer-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: #94a3b8;
+        }
+        
+        /* Success Message */
+        .success-box {
+            max-width: 768px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            border-top: 4px solid #16a34a;
+            text-align: center;
+        }
+        
+        .success-icon {
+            width: 5rem;
+            height: 5rem;
+            background: #dcfce7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            color: #16a34a;
+        }
+        
+        .success-title {
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+        
+        .success-text {
+            font-size: 1.125rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+        
+        .back-btn {
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 0.5rem;
+            display: inline-block;
+            transition: opacity 0.3s;
+        }
+        
+        .back-btn:hover {
+            opacity: 0.9;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 100;
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 1rem;
+            max-width: 768px;
+            width: 100%;
+            padding: 2rem;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0f172a;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: background 0.3s;
+        }
+        
+        .modal-close:hover {
+            background: #f8fafc;
+        }
+        
+        .kvkk-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .kvkk-section-title {
+            font-size: 1.125rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+        }
+        
+        .kvkk-section-text {
+            color: #475569;
+            line-height: 1.75;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.75rem;
+            }
+            
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-grid,
+            .services-grid,
+            .footer-grid,
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">
+                <div class="logo-box">CS</div>
+                <span class="logo-text heading-font">ClaimSolver</span>
+            </a>
+            <div class="nav-links">
+                <a href="#home">Ana Sayfa</a>
+                <a href="#about">Hakkımızda</a>
+                <a href="#services">Hizmetlerimiz</a>
+                <a href="#contact" class="nav-cta">İletişim</a>
+                <button class="lang-btn" onclick="toggleLanguage()">🇬🇧 EN</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="container">
+            <p class="hero-tagline" id="tagline">Sigorta Hasar Dosya Çözümleri & Rücu Yönetim Danışmanlığı</p>
+            <h1 class="hero-title heading-font" id="slogan1">Her dosyanın bir çözümü vardır.</h1>
+            <h2 class="hero-subtitle heading-font gold-accent" id="slogan2">Çözüm biziz.</h2>
+            <a href="#contact" class="hero-cta" id="heroCta">
+                Ücretsiz Analiz Başlat →
+            </a>
+            <div class="hero-stats">
+                <div>
+                    <div class="stat-number" id="stat1">1000+ Dosya</div>
+                </div>
+                <div>
+                    <div class="stat-number gold-accent" id="stat2">%85 Başarı</div>
+                </div>
+                <div>
+                    <div class="stat-number" id="stat3">24 Saat Yanıt</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title heading-font" id="aboutTitle">Hakkımızda</h2>
+            <p class="about-intro" id="aboutIntro">ClaimSolver, sigorta sektörüne özel hasar dosyası yönetimi ve rücu danışmanlığı hizmetleri sunan bağımsız bir platformdur.</p>
+            
+            <div class="about-grid">
+                <p class="about-text" id="aboutP1">Oto ve oto dışı tüm branşlardaki hasar dosyalarında, özellikle tahsil edilemeyen veya çözümsüz görülen durumlarda devreye girer; süreci sonuca ulaştırana kadar takibi bırakmaz.</p>
+                <p class="about-text" id="aboutP2">Değer kaybı, hasar farkı, kusur değişimi talepleri gibi trafik kaynaklı dosyaların yanı sıra, CMR ve FFL teminatlı uluslararası taşımacılık kaynaklı karmaşık rücu süreçlerinde de etkin çözümler sunar.</p>
+                <p class="about-text" id="aboutP3">SEGEM sertifikalı ve sektörel deneyime sahip uzman kadrosuyla, sigortalıdan eksperine, eksperden tahsilata kadar olan tüm süreci bütüncül bir yaklaşımla ele alır.</p>
+                <p class="about-text" id="aboutP4">Rücu dosyalarındaki iletişim, belge inceleme ve ısrarlı takip sayesinde kayıp gibi görünen bedellerin tahsilatını mümkün kılar, yalnızca hasarı değil, sürecin tamamını yönetir.</p>
+            </div>
+            
+            <div class="ai-box">
+                <div class="ai-icon">⚡</div>
+                <div>
+                    <h3 class="ai-title heading-font" id="aiTitle">Yapay Zeka Destekli Analiz</h3>
+                    <p class="ai-text" id="aiText">Yapay zeka destekli analiz motoru ile dosya değerlendirmesi 5 dakikadan kısa sürede tamamlanır; uzman ekip 24 saat içinde detaylı rapor sunar. Binlerce dosya verisiyle eğitilmiş AI sistemimiz, başarı oranını tahmin eder, stratejik öneriler sunar ve süreci hızlandırır.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title heading-font" id="servicesTitle">Hizmetlerimiz</h2>
+            <p class="section-subtitle" id="servicesSubtitle">Her dosya türü için profesyonel çözüm</p>
+            
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services will be populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div id="contactForm">
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <div style="text-align: center; margin-bottom: 2.5rem;">
+                        <h2 class="section-title heading-font" id="contactTitle">Ücretsiz Analiz Başvurusu</h2>
+                        <p class="section-subtitle" id="contactSubtitle">24 saat içinde size geri dönüş yapacağız</p>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" id="nameLabel">Ad Soyad *</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" id="companyLabel">Şirket</label>
+                            <input type="text" class="form-input">
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" id="emailLabel">E-posta *</label>
+                            <input type="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" id="phoneLabel">Telefon</label>
+                            <input type="tel" class="form-input">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" id="serviceLabel">Hizmet Türü *</label>
+                        <select class="form-input" required id="serviceSelect">
+                            <!-- Options will be populated by JS -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" id="descLabel">Dosyanızı Kısaca Açıklayın *</label>
+                        <textarea class="form-input" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" id="fileLabel">Belge Ekleyin (PDF, maks 10MB)</label>
+                        <div class="file-upload">
+                            <input type="file" accept=".pdf" style="display: none;" id="fileInput">
+                            <label for="fileInput" style="cursor: pointer;" id="fileUploadLabel">📄 Dosya Seç</label>
+                        </div>
+                    </div>
+                    
+                    <div class="kvkk-box">
+                        <label class="kvkk-label">
+                            <input type="checkbox" class="kvkk-checkbox" required>
+                            <span id="kvkkLabel">
+                                KVKK Aydınlatma Metni'ni okudum, onaylıyorum
+                                <a href="#" class="kvkk-link" onclick="openKVKK(event)" id="kvkkLink">KVKK Aydınlatma Metni</a>
+                            </span>
+                        </label>
+                    </div>
+                    
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #1e3a8a; margin-bottom: 1.5rem;">
+                        <p style="font-size: 0.875rem; color: #475569;" id="contactNote">İlk analiz tamamen ücretsizdir. Detaylı raporlar ve hukuki destek için fiyatlandırma dosyanızın durumuna göre belirlenecektir.</p>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="submitBtn">Gönder →</button>
+                    
+                    <div class="email-contact">
+                        <p style="color: #64748b; margin-bottom: 0.75rem;" id="emailText">E-posta ile iletişim:</p>
+                        <a href="mailto:info@claimsolver.co" class="email-link">
+                            ✉️ info@claimsolver.co
+                        </a>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="successMessage" class="hidden">
+                <div class="success-box">
+                    <div class="success-icon">✓</div>
+                    <h2 class="success-title heading-font" id="successTitle">Başvurunuz Alındı</h2>
+                    <p class="success-text" id="successText">Dosyanız incelemeye alındı. 24 saat içinde size detaylı analiz raporu göndereceğiz.</p>
+                    <a href="#home" class="back-btn" onclick="resetForm()" id="backBtn">Ana Sayfaya Dön</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                        <div style="width: 2.5rem; height: 2.5rem; background: rgba(255,255,255,0.1); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">CS</div>
+                        <span class="footer-title heading-font">ClaimSolver</span>
+                    </div>
+                    <p class="footer-text" id="footerDesc">AI destekli sigorta hasar dosya yönetimi ve rücu danışmanlığı platformu.</p>
+                </div>
+                <div>
+                    <h3 class="footer-title" id="footerServicesTitle">Hizmetler</h3>
+                    <ul class="footer-links" id="footerServicesList">
+                        <li>Hasar Dosyası Yönetimi</li>
+                        <li>Rücu Takibi</li>
+                        <li>CMR/FFL Analizi</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-title" id="footerContactTitle">İletişim</h3>
+                    <a href="mailto:info@claimsolver.co" class="footer-link">✉️ info@claimsolver.co</a>
+                    <div style="margin-top: 1.5rem;">
+                        <h3 class="footer-title" id="footerLegalTitle">Yasal</h3>
+                        <a href="#" class="footer-link" onclick="openKVKK(event)" id="footerKvkkLink">KVKK</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p id="footerCopyright">&copy; 2026 ClaimSolver. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- KVKK Modal -->
+    <div id="kvkkModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="kvkkModalTitle">KVKK Aydınlatma Metni</h2>
+                <button class="modal-close" onclick="closeKVKK()">✕</button>
+            </div>
+            <div id="kvkkContent">
+                <!-- Content will be populated by JS -->
+            </div>
+            <button class="submit-btn" onclick="closeKVKK()" id="kvkkCloseBtn">Kapat</button>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'tr';
+        
+        const content = {
+            tr: {
+                services: [
+                    {
+                        title: 'Hasar Dosyası Yönetimi',
+                        desc: 'Trafik ve oto dışı tüm branşlardaki sigorta hasar dosyalarını teknik detaylarıyla birlikte ele alır; evrak takibinden sonuçlandırmaya kadar tüm süreci sistematik biçimde yönetir.',
+                        ai: 'AI ile otomatik evrak analizi ve eksik belge tespiti'
+                    },
+                    {
+                        title: 'Rücu Takibi ve Danışmanlığı',
+                        desc: 'Tahsil edilemeyen, bekleyen veya karmaşık hale gelmiş rücu dosyalarında iletişim süreçlerinden yasal yazışmalara kadar tüm adımları takip eder, sonuca ulaşana kadar sürecin arkasında durur.',
+                        ai: 'AI destekli başarı oranı tahmini ve stratejik yol haritası'
+                    },
+                    {
+                        title: 'Değer Kaybı ve Hasar Farkı',
+                        desc: 'Sigortalı taraflı trafik kazalarında oluşan değer kaybı veya onarım sonrası fark taleplerine ilişkin tüm evrak, hesaplama, iletişim ve tahsilat süreci yürütülür.',
+                        ai: 'AI ile değer kaybı hesaplama ve emsal vaka analizi'
+                    },
+                    {
+                        title: 'Kusur Oranı ve Değişimi',
+                        desc: 'Eksper raporları ya da kusur oranları sigortalı aleyhine geliştiğinde, ilgili yazışmaları ve gerekçeli talepleri düzenleyerek dosya itiraz sürecini yönetir.',
+                        ai: 'AI tabanlı kusur analizi ve karşılaştırmalı değerlendirme'
+                    },
+                    {
+                        title: 'CMR ve FFL Uluslararası Dosyalar',
+                        desc: 'Uluslararası taşıma kaynaklı zararlarda, CMR Konvansiyonu ve Freight Forwarder Liability teminatlı dosyalara yönelik çözüm ve rücu danışmanlığı sunar.',
+                        ai: 'AI ile CMR madde analizi ve hukuki dayanak tespiti'
+                    },
+                    {
+                        title: 'Kapalı/Bekleyen Dosyalar',
+                        desc: 'Bekleyen, eksik evrakla kapanmış ya da iletişim sorunu nedeniyle ilerlemeyen dosyalar için süreci canlandırır ve yeniden tahsil edilebilir hale getirir.',
+                        ai: 'AI ile dosya potansiyeli analizi ve yeniden açma stratejisi'
+                    }
+                ],
+                serviceOptions: [
+                    'Seçiniz...',
+                    'Ret Dosyası Danışmanlığı',
+                    'CMR/FFL Analizi',
+                    'Emtia Hasarı',
+                    'Yangın & Sorumluluk',
+                    'Değer Kaybı',
+                    'Hasar Farkı',
+                    'Kusur Değişimi',
+                    'Yatar Bedeli',
+                    'Uluslararası Rücu',
+                    'Diğer'
+                ]
+            },
+            en: {
+                services: [
+                    {
+                        title: 'Claim File Management',
+                        desc: 'Handles insurance claim files in all traffic and non-auto branches with technical details; systematically manages the entire process from document tracking to finalization.',
+                        ai: 'AI-powered automatic document analysis and missing document detection'
+                    },
+                    {
+                        title: 'Subrogation Tracking & Consulting',
+                        desc: 'For uncollected, pending, or complicated subrogation files, tracks all steps from communication processes to legal correspondence, standing behind the process until resolution.',
+                        ai: 'AI-supported success rate prediction and strategic roadmap'
+                    },
+                    {
+                        title: 'Diminished Value & Claim Difference',
+                        desc: 'Conducts all documentation, calculation, communication and collection processes related to diminished value or post-repair difference claims in insured-party traffic accidents.',
+                        ai: 'AI-powered diminished value calculation and precedent case analysis'
+                    },
+                    {
+                        title: 'Fault Ratio & Modification',
+                        desc: 'When expert reports or fault ratios develop against the insured, manages the file objection process by organizing relevant correspondence and justified requests.',
+                        ai: 'AI-based fault analysis and comparative evaluation'
+                    },
+                    {
+                        title: 'CMR & FFL International Files',
+                        desc: 'Provides solution and subrogation consulting for files covered by CMR Convention and Freight Forwarder Liability in international transportation-related losses.',
+                        ai: 'AI-powered CMR article analysis and legal basis determination'
+                    },
+                    {
+                        title: 'Closed/Pending Files',
+                        desc: 'For files that are pending, closed with incomplete documents, or stalled due to communication issues, revitalizes the process and makes them collectible again.',
+                        ai: 'AI-powered file potential analysis and reopening strategy'
+                    }
+                ],
+                serviceOptions: [
+                    'Select...',
+                    'Rejected Claim Consulting',
+                    'CMR/FFL Analysis',
+                    'Cargo Damage',
+                    'Fire & Liability',
+                    'Diminished Value',
+                    'Claim Difference',
+                    'Fault Modification',
+                    'Loss of Use',
+                    'International Subrogation',
+                    'Other'
+                ]
+            }
+        };
+        
+        function renderServices() {
+            const grid = document.getElementById('servicesGrid');
+            const services = content[currentLang].services;
+            
+            grid.innerHTML = services.map(s => `
+                <div class="service-card">
+                    <h3 class="service-title heading-font">${s.title}</h3>
+                    <p class="service-desc">${s.desc}</p>
+                    <div class="service-ai">⚡ ${s.ai}</div>
+                </div>
+            `).join('');
+        }
+        
+        function renderServiceOptions() {
+            const select = document.getElementById('serviceSelect');
+            const options = content[currentLang].serviceOptions;
+            
+            select.innerHTML = options.map(opt => `<option value="${opt}">${opt}</option>`).join('');
+        }
+        
+        function toggleLanguage() {
+            currentLang = currentLang === 'tr' ? 'en' : 'tr';
+            updateContent();
+        }
+        
+        function updateContent() {
+            const lang = currentLang;
+            
+            if (lang === 'en') {
+                document.getElementById('tagline').textContent = 'Insurance Claim Solutions & Subrogation Management Consulting';
+                document.getElementById('slogan1').textContent = 'Every claim has a solution.';
+                document.getElementById('slogan2').textContent = 'We are the solution.';
+                document.getElementById('heroCta').textContent = 'Free Analysis →';
+                document.getElementById('stat1').textContent = '1000+ Cases';
+                document.getElementById('stat2').textContent = '85% Success';
+                document.getElementById('stat3').textContent = '24h Response';
+                document.getElementById('aboutTitle').textContent = 'About Us';
+                document.getElementById('aboutIntro').textContent = 'ClaimSolver is an independent platform providing specialized claim file management and subrogation consulting services for the insurance sector.';
+                document.getElementById('aboutP1').textContent = 'We intervene in all branches of auto and non-auto claim files, especially in cases deemed uncollectible or unsolvable; we never abandon the process until it reaches resolution.';
+                document.getElementById('aboutP2').textContent = 'In addition to traffic-related files such as diminished value, claim differences, and fault modification requests, we also provide effective solutions in complex subrogation processes involving CMR and FFL covered international transportation.';
+                document.getElementById('aboutP3').textContent = 'With SEGEM certified and sector-experienced expert staff, we approach the entire process from insured to expert, from expert to collection, with a holistic approach.';
+                document.getElementById('aboutP4').textContent = 'Through communication, document review, and persistent follow-up in subrogation files, we make it possible to collect amounts that appear lost, managing not only the damage but the entire process.';
+                document.getElementById('aiTitle').textContent = 'AI-Powered Analysis';
+                document.getElementById('aiText').textContent = 'Our AI-powered analysis engine completes file evaluation in less than 5 minutes; expert team delivers detailed reports within 24 hours. Trained on thousands of case files, our AI system predicts success rates, provides strategic recommendations, and accelerates the process.';
+                document.getElementById('servicesTitle').textContent = 'Our Services';
+                document.getElementById('servicesSubtitle').textContent = 'Professional solutions for every case type';
+                document.getElementById('contactTitle').textContent = 'Free Analysis Application';
+                document.getElementById('contactSubtitle').textContent = 'We will respond within 24 hours';
+                document.getElementById('nameLabel').textContent = 'Full Name *';
+                document.getElementById('companyLabel').textContent = 'Company';
+                document.getElementById('emailLabel').textContent = 'Email *';
+                document.getElementById('phoneLabel').textContent = 'Phone';
+                document.getElementById('serviceLabel').textContent = 'Service Type *';
+                document.getElementById('descLabel').textContent = 'Briefly Describe Your Case *';
+                document.getElementById('fileLabel').textContent = 'Upload Document (PDF, max 10MB)';
+                document.getElementById('fileUploadLabel').textContent = '📄 Choose File';
+                document.getElementById('kvkkLabel').innerHTML = 'I have read and accept the Privacy Policy <a href="#" class="kvkk-link" onclick="openKVKK(event)" id="kvkkLink">Privacy Policy</a>';
+                document.getElementById('contactNote').textContent = 'Initial analysis is completely free. Pricing for detailed reports and legal support will be determined based on your case situation.';
+                document.getElementById('submitBtn').textContent = 'Submit →';
+                document.getElementById('emailText').textContent = 'Contact via email:';
+                document.getElementById('successTitle').textContent = 'Application Received';
+                document.getElementById('successText').textContent = 'Your file has been received for review. We will send you a detailed analysis report within 24 hours.';
+                document.getElementById('backBtn').textContent = 'Back to Home';
+                document.getElementById('footerDesc').textContent = 'AI-powered insurance claim file management and subrogation consulting platform.';
+                document.getElementById('footerServicesTitle').textContent = 'Services';
+                document.getElementById('footerContactTitle').textContent = 'Contact';
+                document.getElementById('footerLegalTitle').textContent = 'Legal';
+                document.getElementById('footerKvkkLink').textContent = 'Privacy';
+                document.getElementById('footerCopyright').textContent = '© 2026 ClaimSolver. All rights reserved.';
+                document.querySelector('.lang-btn').textContent = '🇹🇷 TR';
+            } else {
+                document.getElementById('tagline').textContent = 'Sigorta Hasar Dosya Çözümleri & Rücu Yönetim Danışmanlığı';
+                document.getElementById('slogan1').textContent = 'Her dosyanın bir çözümü vardır.';
+                document.getElementById('slogan2').textContent = 'Çözüm biziz.';
+                document.getElementById('heroCta').textContent = 'Ücretsiz Analiz Başlat →';
+                document.getElementById('stat1').textContent = '1000+ Dosya';
+                document.getElementById('stat2').textContent = '%85 Başarı';
+                document.getElementById('stat3').textContent = '24 Saat Yanıt';
+                document.getElementById('aboutTitle').textContent = 'Hakkımızda';
+                document.getElementById('aboutIntro').textContent = 'ClaimSolver, sigorta sektörüne özel hasar dosyası yönetimi ve rücu danışmanlığı hizmetleri sunan bağımsız bir platformdur.';
+                document.getElementById('aboutP1').textContent = 'Oto ve oto dışı tüm branşlardaki hasar dosyalarında, özellikle tahsil edilemeyen veya çözümsüz görülen durumlarda devreye girer; süreci sonuca ulaştırana kadar takibi bırakmaz.';
+                document.getElementById('aboutP2').textContent = 'Değer kaybı, hasar farkı, kusur değişimi talepleri gibi trafik kaynaklı dosyaların yanı sıra, CMR ve FFL teminatlı uluslararası taşımacılık kaynaklı karmaşık rücu süreçlerinde de etkin çözümler sunar.';
+                document.getElementById('aboutP3').textContent = 'SEGEM sertifikalı ve sektörel deneyime sahip uzman kadrosuyla, sigortalıdan eksperine, eksperden tahsilata kadar olan tüm süreci bütüncül bir yaklaşımla ele alır.';
+                document.getElementById('aboutP4').textContent = 'Rücu dosyalarındaki iletişim, belge inceleme ve ısrarlı takip sayesinde kayıp gibi görünen bedellerin tahsilatını mümkün kılar, yalnızca hasarı değil, sürecin tamamını yönetir.';
+                document.getElementById('aiTitle').textContent = 'Yapay Zeka Destekli Analiz';
+                document.getElementById('aiText').textContent = 'Yapay zeka destekli analiz motoru ile dosya değerlendirmesi 5 dakikadan kısa sürede tamamlanır; uzman ekip 24 saat içinde detaylı rapor sunar. Binlerce dosya verisiyle eğitilmiş AI sistemimiz, başarı oranını tahmin eder, stratejik öneriler sunar ve süreci hızlandırır.';
+                document.getElementById('servicesTitle').textContent = 'Hizmetlerimiz';
+                document.getElementById('servicesSubtitle').textContent = 'Her dosya türü için profesyonel çözüm';
+                document.getElementById('contactTitle').textContent = 'Ücretsiz Analiz Başvurusu';
+                document.getElementById('contactSubtitle').textContent = '24 saat içinde size geri dönüş yapacağız';
+                document.getElementById('nameLabel').textContent = 'Ad Soyad *';
+                document.getElementById('companyLabel').textContent = 'Şirket';
+                document.getElementById('emailLabel').textContent = 'E-posta *';
+                document.getElementById('phoneLabel').textContent = 'Telefon';
+                document.getElementById('serviceLabel').textContent = 'Hizmet Türü *';
+                document.getElementById('descLabel').textContent = 'Dosyanızı Kısaca Açıklayın *';
+                document.getElementById('fileLabel').textContent = 'Belge Ekleyin (PDF, maks 10MB)';
+                document.getElementById('fileUploadLabel').textContent = '📄 Dosya Seç';
+                document.getElementById('kvkkLabel').innerHTML = 'KVKK Aydınlatma Metni\'ni okudum, onaylıyorum <a href="#" class="kvkk-link" onclick="openKVKK(event)" id="kvkkLink">KVKK Aydınlatma Metni</a>';
+                document.getElementById('contactNote').textContent = 'İlk analiz tamamen ücretsizdir. Detaylı raporlar ve hukuki destek için fiyatlandırma dosyanızın durumuna göre belirlenecektir.';
+                document.getElementById('submitBtn').textContent = 'Gönder →';
+                document.getElementById('emailText').textContent = 'E-posta ile iletişim:';
+                document.getElementById('successTitle').textContent = 'Başvurunuz Alındı';
+                document.getElementById('successText').textContent = 'Dosyanız incelemeye alındı. 24 saat içinde size detaylı analiz raporu göndereceğiz.';
+                document.getElementById('backBtn').textContent = 'Ana Sayfaya Dön';
+                document.getElementById('footerDesc').textContent = 'AI destekli sigorta hasar dosya yönetimi ve rücu danışmanlığı platformu.';
+                document.getElementById('footerServicesTitle').textContent = 'Hizmetler';
+                document.getElementById('footerContactTitle').textContent = 'İletişim';
+                document.getElementById('footerLegalTitle').textContent = 'Yasal';
+                document.getElementById('footerKvkkLink').textContent = 'KVKK';
+                document.getElementById('footerCopyright').textContent = '© 2026 ClaimSolver. Tüm hakları saklıdır.';
+                document.querySelector('.lang-btn').textContent = '🇬🇧 EN';
+            }
+            
+            renderServices();
+            renderServiceOptions();
+        }
+        
+        function handleSubmit(e) {
+            e.preventDefault();
+            document.getElementById('contactForm').classList.add('hidden');
+            document.getElementById('successMessage').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function resetForm() {
+            document.getElementById('contactForm').classList.remove('hidden');
+            document.getElementById('successMessage').classList.add('hidden');
+            document.querySelector('form').reset();
+        }
+        
+        function openKVKK(e) {
+            e.preventDefault();
+            const modal = document.getElementById('kvkkModal');
+            const content = document.getElementById('kvkkContent');
+            
+            if (currentLang === 'tr') {
+                document.getElementById('kvkkModalTitle').textContent = 'KVKK Aydınlatma Metni';
+                document.getElementById('kvkkCloseBtn').textContent = 'Kapat';
+                content.innerHTML = `
+                    <p style="color: #475569; line-height: 1.75; margin-bottom: 1.5rem;">ClaimSolver olarak kişisel verilerinizin güvenliği bizim için önceliklidir. 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında sizi bilgilendirmek isteriz:</p>
+                    <div class="kvkk-section">
+                        <h3 class="kvkk-section-title">1. Veri Sorumlusu</h3>
+                        <p class="kvkk-section-text">Kişisel verileriniz, ClaimSolver tarafından aşağıda açıklanan kapsamda işlenecektir.</p>
+                    </div>
+                    <div class="kvkk-section">
+                        <h3 class="kvkk-section-title">2. İşlenen Kişisel Veriler</h3>
+                        <p class="kvkk-section-text">Ad-Soyad, şirket bilgisi, e-posta adresi, telefon numarası, hasar dosyası bilgileri ve yüklediğiniz belgeler.</p>
+                    </div>
+                    <div class="kvkk-section">
+                        <h3 class="kvkk-section-title">3. Kişisel Verilerin İşlenme Amacı</h3>
+                        <p class="kvkk-section-text">Hasar dosyanızı analiz etmek, size danışmanlık hizmeti sunmak, iletişim kurmak ve hukuki süreçleri yönetmek.</p>
+                    </div>
+                    <div class="kvkk-section">
+                        <h3 class="kvkk-section-title">4. Verilerin Aktarımı</h3>
+                        <p class="kvkk-section-text">Kişisel verileriniz, hukuki danışmanlık hizmeti vermek amacıyla anlaşmalı avukatlarımız ve sigorta şirketleri ile paylaşılabilir.</p>
+                    </div>
+                    <div class="kvkk-section">
+                        <h3 class="kvkk-section-title">5. Veri Saklama Süresi</h3>
+                        <p class="kvkk-section-text">Kişisel verileriniz, hizmet süresi boyunca ve yasal saklama yükümlülükleri süresince (en fazla 10 yıl) saklanır. Dosyanızın kapanmasından 30 gün sonra yüklediğiniz belgeler silinir.</p>
+                    </div>
+                    <div class="kvkk-section">
+                        <h3 class="kvkk-section-title">6. Haklarınız</h3>
+                        <p class="kvkk-section-text">KVKK madde 11 uyarınca verilerinize erişim, düzeltme, silme, işlemenin durdurulması ve itiraz etme haklarınız bulunmaktadır. info@claimsolver.co adresine e-posta göndererek haklarınızı kullanabilirsiniz.</p>
+                    </div>
+                `;
+            } else {
+                document.getElementById('kvkkModalTitle').textContent = 'Privacy Policy';
+                document.getElementById('kvkkCloseBtn').textContent = 'Close';
+                content.innerHTML = `
+                    <p style="color: #475569; line-height: 1.75; margin-bottom: 1.5rem;">At ClaimSolver, the security of your personal data is our priority. We would like to inform you within the scope of the Personal Data Protection Law No. 6698:</p>
+                    <div class="kvkk-section">
+                        <h3 class="kvkk-section-title">1. Data Controller</h3>
+                        <p class="kvkk-section-text">Your personal data will be processed by ClaimSolver within the scope described below.</p>
+                    </div>
+                    <div class="kvkk-section">
+                        <h3 class="kvkk-section-title">2. Processed Personal Data</h3>
+                        <p class="kvkk-section-text">Name-surname, company information, email address, phone number, claim file information and uploaded documents.</p>
+                    </div>
+                    <div class="kvkk-section">
+                        <h3 class="kvkk-section-title">3. Purpose of Processing</h3>
+                        <p class="kvkk-section-text">To analyze your claim file, provide consulting services, communicate with you and manage legal processes.</p>
+                    </div>
+                    <div class="kvkk-section">
+                        <h3 class="kvkk-section-title">4. Data Transfer</h3>
+                        <p class="kvkk-section-text">Your personal data may be shared with our contracted lawyers and insurance companies for the purpose of providing legal consulting services.</p>
+                    </div>
+                    <div class="kvkk-section">
+                        <h3 class="kvkk-section-title">5. Data Retention Period</h3>
+                        <p class="kvkk-section-text">Your personal data is stored during the service period and legal retention obligations (maximum 10 years). Uploaded documents are deleted 30 days after your file is closed.</p>
+                    </div>
+                    <div class="kvkk-section">
+                        <h3 class="kvkk-section-title">6. Your Rights</h3>
+                        <p class="kvkk-section-text">In accordance with Article 11 of the KVKK, you have the right to access, correct, delete, stop processing and object to your data. You can exercise your rights by sending an email to info@claimsolver.co.</p>
+                    </div>
+                `;
+            }
+            
+            modal.classList.add('active');
+        }
+        
+        function closeKVKK() {
+            document.getElementById('kvkkModal').classList.remove('active');
+        }
+        
+        // Initialize
+        renderServices();
+        renderServiceOptions();
+    </script>
+</body>
+</html>
