@@ -784,9 +784,10 @@
                     <div class="form-group">
                         <label class="form-label" id="fileLabel">Belge Ekleyin (PDF, maks 10MB)</label>
                         <div class="file-upload">
-                            <input type="file" accept=".pdf" style="display: none;" id="fileInput">
+                            <input type="file" name="file" accept=".pdf" style="display: none;" id="fileInput">
                             <label for="fileInput" style="cursor: pointer;" id="fileUploadLabel">📄 Dosya Seç</label>
                         </div>
+                        <div id="fileName" style="margin-top: 0.5rem; color: #1e3a8a; font-size: 0.875rem;"></div>
                     </div>
                     
                     <div class="kvkk-box">
@@ -1109,9 +1110,11 @@
         const result = await response.json();
         
         if (result.success) {
-            document.getElementById('contactForm').classList.add('hidden');
+document.getElementById('contactForm').classList.add('hidden');
             document.getElementById('successMessage').classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => {
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
         } else {
             alert('Bir hata oluştu. Lütfen tekrar deneyin.');
         }
@@ -1204,6 +1207,16 @@
         // Initialize
         renderServices();
         renderServiceOptions();
+
+        // PDF dosya seçildiğinde ismini göster
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const fileName = document.getElementById('fileName');
+            if (e.target.files.length > 0) {
+                fileName.textContent = '✓ ' + e.target.files[0].name;
+            } else {
+                fileName.textContent = '';
+            }
+        });
     </script>
 </body>
 </html>
