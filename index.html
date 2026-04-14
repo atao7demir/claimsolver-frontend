@@ -113,21 +113,56 @@
             opacity: 0.9;
         }
         
-        .lang-btn {
-            padding: 0.5rem 1rem;
-            border: 1px solid #cbd5e1;
-            border-radius: 0.5rem;
-            background: white;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.875rem;
-            transition: background 0.3s;
-        }
+.lang-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.5rem;
+    background: white;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
         
         .lang-btn:hover {
             background: #f8fafc;
         }
-        
+        /* Mobile Menu */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #0f172a;
+}
+
+.nav-links.mobile-open {
+    display: flex !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+}
         /* Hero */
         .hero {
             padding-top: 8rem;
@@ -687,9 +722,10 @@
     <nav>
         <div class="container">
             <a href="#" class="logo">
-                <div class="logo-box">CS</div>
+                <img src="./assets/logo-nav.png" alt="ClaimSolver" style="height: 40px;">
                 <span class="logo-text heading-font">ClaimSolver</span>
             </a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
             <div class="nav-links">
                 <a href="#home">Ana Sayfa</a>
                 <a href="#about">Hakkımızda</a>
@@ -935,7 +971,7 @@
             <div class="footer-grid">
                 <div>
                     <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-                        <div style="width: 2.5rem; height: 2.5rem; background: rgba(255,255,255,0.1); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">CS</div>
+                        <img src="./assets/logo-footer.png" alt="ClaimSolver" style="height: 40px;">
                         <span class="footer-title heading-font">ClaimSolver</span>
                     </div>
                     <p class="footer-text" id="footerDesc">AI destekli sigorta hasar dosya yönetimi ve rücu danışmanlığı platformu.</p>
@@ -1358,6 +1394,10 @@
             document.getElementById('kvkkModal').classList.remove('active');
         }
         
+function toggleMobileMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('mobile-open');
+}
         // Initialize
         renderServices();
         renderServiceOptions();
