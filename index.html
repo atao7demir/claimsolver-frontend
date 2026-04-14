@@ -741,7 +741,9 @@
     <a href="#services">Hizmetlerimiz</a>
     <a href="#contact" class="nav-cta">İletişim</a>
 </div>
-<button class="lang-btn" onclick="toggleLanguage()">🇬🇧 EN</button>
+<button class="lang-btn" onclick="toggleLanguage()">
+    <img src="https://flagcdn.com/w20/gb.png" alt="EN" style="width: 20px; height: 15px;"> EN
+</button>
         </div>
     </nav>
 
@@ -1191,7 +1193,7 @@
                 document.getElementById('footerLegalTitle').textContent = 'Legal';
                 document.getElementById('footerKvkkLink').textContent = 'Privacy';
                 document.getElementById('footerCopyright').textContent = '© 2026 ClaimSolver. All rights reserved.';
-                document.querySelector('.lang-btn').textContent = '🇹🇷 TR';
+                document.querySelector('.lang-btn').innerHTML = '<img src="https://flagcdn.com/w20/tr.png" alt="TR" style="width: 20px; height: 15px;"> TR';
             } else {
                 document.getElementById('tagline').textContent = 'Sigorta Hasar Dosya Çözümleri & Rücu Yönetim Danışmanlığı';
                 document.getElementById('slogan1').textContent = 'Her dosyanın bir çözümü vardır.';
@@ -1227,13 +1229,13 @@
                 document.getElementById('successTitle').textContent = 'Başvurunuz Alındı';
                 document.getElementById('successText').textContent = 'Dosyanız incelemeye alındı. 24 saat içinde size detaylı analiz raporu göndereceğiz.';
                 document.getElementById('backBtn').textContent = 'Ana Sayfaya Dön';
-                document.getElementById('footerDesc').textContent = 'AI destekli sigorta hasar dosya yönetimi ve rücu danışmanlığı platformu.';
+                document.getElementById('footerDesc').textContent = 'AI destekli sigorta hasar dosya yönetimi ve rücu danışmanlığı platformu. #InsurTech';
                 document.getElementById('footerServicesTitle').textContent = 'Hizmetler';
                 document.getElementById('footerContactTitle').textContent = 'İletişim';
                 document.getElementById('footerLegalTitle').textContent = 'Yasal';
                 document.getElementById('footerKvkkLink').textContent = 'KVKK';
                 document.getElementById('footerCopyright').textContent = '© 2026 ClaimSolver. Tüm hakları saklıdır.';
-                document.querySelector('.lang-btn').textContent = '🇬🇧 EN';
+                document.querySelector('.lang-btn').innerHTML = '<img src="https://flagcdn.com/w20/gb.png" alt="EN" style="width: 20px; height: 15px;"> EN';
             }
             
             renderServices();
