@@ -555,6 +555,27 @@
             opacity: 0.9;
         }
         
+        /* Loading Spinner */
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .spinner {
+            width: 4rem;
+            height: 4rem;
+            border: 4px solid #e2e8f0;
+            border-top: 4px solid #1e3a8a;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         /* Modal */
         .modal {
             display: none;
@@ -747,31 +768,31 @@
                         <p class="section-subtitle" id="contactSubtitle">24 saat içinde size geri dönüş yapacağız</p>
                     </div>
                     
-<div class="form-grid">
-    <div class="form-group">
-        <label class="form-label" id="nameLabel">Ad Soyad *</label>
-        <input type="text" name="name" class="form-input" required>
-    </div>
-    <div class="form-group">
-        <label class="form-label" id="companyLabel">Şirket</label>
-        <input type="text" name="company" class="form-input">
-    </div>
-</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" id="nameLabel">Ad Soyad *</label>
+                            <input type="text" name="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" id="companyLabel">Şirket</label>
+                            <input type="text" name="company" class="form-input">
+                        </div>
+                    </div>
 
-<div class="form-grid">
-    <div class="form-group">
-        <label class="form-label" id="emailLabel">E-posta *</label>
-        <input type="email" name="email" class="form-input" required>
-    </div>
-    <div class="form-group">
-        <label class="form-label" id="phoneLabel">Telefon</label>
-        <input type="tel" name="phone" class="form-input">
-    </div>
-</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" id="emailLabel">E-posta *</label>
+                            <input type="email" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" id="phoneLabel">Telefon</label>
+                            <input type="tel" name="phone" class="form-input">
+                        </div>
+                    </div>
 
-<div class="form-group">
-    <label class="form-label" id="serviceLabel">Hizmet Türü *</label>
-    <select name="serviceType" class="form-input" required id="serviceSelect">
+                    <div class="form-group">
+                        <label class="form-label" id="serviceLabel">Hizmet Türü *</label>
+                        <select name="serviceType" class="form-input" required id="serviceSelect">
                             <!-- Options will be populated by JS -->
                         </select>
                     </div>
@@ -813,6 +834,88 @@
                         </a>
                     </div>
                 </form>
+            </div>
+            
+            <!-- Loading Screen -->
+            <div id="loadingScreen" class="hidden">
+                <div class="success-box">
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                    </div>
+                    <h2 class="success-title heading-font" id="loadingTitle">Dosyanız Analiz Ediliyor...</h2>
+                    <p class="success-text" id="loadingText">ClaimSolver AI değerlendirme yapıyor</p>
+                    <div style="margin-top: 2rem; color: #64748b; font-size: 0.875rem;">
+                        <p>⏱️ Bu işlem 30-60 saniye sürebilir</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Result Screen -->
+            <div id="analysisResult" class="hidden">
+                <div class="success-box" style="max-width: 900px;">
+                    <div class="success-icon" style="background: #dcfce7;">✓</div>
+                    <h2 class="success-title heading-font" id="analysisTitle">Analiz Tamamlandı</h2>
+                    
+                    <!-- Success Probability -->
+                    <div style="margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); border-radius: 1rem;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; font-weight: bold; color: #d4af37; margin-bottom: 0.5rem;" id="successRate">%--</div>
+                            <div style="color: white; font-size: 1.125rem;" id="successLabel">Başarı İhtimali</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Summary -->
+                    <div style="background: #eff6ff; padding: 1.5rem; border-radius: 0.75rem; border-left: 4px solid #1e3a8a; margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.125rem; font-weight: bold; color: #0f172a; margin-bottom: 1rem;" id="summaryTitle">📝 Ön Değerlendirme</h3>
+                        <p style="color: #475569; line-height: 1.75;" id="summaryText">...</p>
+                    </div>
+                    
+                    <!-- Premium Report Option -->
+                    <div style="border: 2px solid #1e3a8a; border-radius: 1rem; padding: 2rem; margin-bottom: 1.5rem; background: white;">
+                        <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="font-size: 2rem;">💎</div>
+                            <div style="flex: 1;">
+                                <h3 style="font-size: 1.5rem; font-weight: bold; color: #0f172a; margin-bottom: 0.5rem;" id="premiumTitle">Detaylı Rapor</h3>
+                                <div style="font-size: 1.875rem; font-weight: bold; color: #1e3a8a; margin-bottom: 1rem;">4,500 TL</div>
+                                <ul style="list-style: none; padding: 0; margin: 0;">
+                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium1">→ 15-20 sayfa profesyonel analiz</li>
+                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium2">→ Hukuki dayanak ve emsal kararlar</li>
+                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium3">→ Strateji önerileri ve timeline</li>
+                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium4">→ Demand letter şablonu</li>
+                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium5">→ 7 gün email destek</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="submit-btn" onclick="purchasePremiumReport()" id="premiumBtn">Detaylı Rapor Al - 4,500 TL</button>
+                    </div>
+                    
+                    <!-- Corporate Package -->
+                    <div style="border: 2px solid #cbd5e1; border-radius: 1rem; padding: 2rem; margin-bottom: 1.5rem; background: #f8fafc;">
+                        <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="font-size: 2rem;">📦</div>
+                            <div style="flex: 1;">
+                                <h3 style="font-size: 1.25rem; font-weight: bold; color: #0f172a; margin-bottom: 0.5rem;" id="corpTitle">Kurumsal Paket</h3>
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #475569; margin-bottom: 1rem;">12,000 TL/ay</div>
+                                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.875rem;">
+                                    <li style="padding: 0.375rem 0; color: #64748b;" id="corp1">→ Aylık 20 dosya analizi</li>
+                                    <li style="padding: 0.375rem 0; color: #64748b;" id="corp2">→ Sınırsız email danışmanlık</li>
+                                    <li style="padding: 0.375rem 0; color: #64748b;" id="corp3">→ Aylık 2 saat video görüşme</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="submit-btn" onclick="purchaseCorporate()" style="background: #64748b;" id="corpBtn">Kurumsal Paket</button>
+                    </div>
+                    
+                    <!-- Free Continue -->
+                    <div style="text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 0.75rem;">
+                        <h4 style="font-size: 1rem; font-weight: 600; color: #0f172a; margin-bottom: 0.5rem;" id="freeTitle">✉️ Ödeme Yapmadan Devam Et</h4>
+                        <p style="color: #64748b; font-size: 0.875rem; margin-bottom: 1rem;" id="freeText">Uzman ekibimiz 24 saat içinde sizinle iletişime geçecektir.</p>
+                        <div style="margin-bottom: 1rem;">
+                            <a href="mailto:info@claimsolver.co" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">info@claimsolver.co</a>
+                        </div>
+                        <a href="#home" class="back-btn" onclick="resetForm()" id="backHomeBtn">Ana Sayfaya Dön</a>
+                    </div>
+                </div>
             </div>
             
             <div id="successMessage" class="hidden">
@@ -1093,41 +1196,92 @@
         }
         
         async function handleSubmit(e) {
-    e.preventDefault();
-    
-    const form = e.target;
-    const formData = new FormData(form);
-    
-    // Add language
-    formData.append('language', currentLang);
-    
-    try {
-        const response = await fetch('https://claimsolver-backend-production.up.railway.app/api/submit-claim', {
-            method: 'POST',
-            body: formData
-        });
-        
-        const result = await response.json();
-        
-        if (result.success) {
-document.getElementById('contactForm').classList.add('hidden');
-            document.getElementById('successMessage').classList.remove('hidden');
-            setTimeout(() => {
-                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 100);
-        } else {
-            alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+            e.preventDefault();
+            
+            // Hide form, show loading
+            document.getElementById('contactForm').classList.add('hidden');
+            document.getElementById('loadingScreen').classList.remove('hidden');
+            document.getElementById('loadingScreen').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            const formData = new FormData(e.target);
+            formData.append('language', currentLang);
+            
+            try {
+                const response = await fetch('https://claimsolver-backend-production.up.railway.app/api/submit-claim', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success && result.analysis) {
+                    // Hide loading, show analysis
+                    document.getElementById('loadingScreen').classList.add('hidden');
+                    document.getElementById('analysisResult').classList.remove('hidden');
+                    
+                    // Fill analysis data
+                    document.getElementById('successRate').textContent = '%' + result.analysis.successProbability;
+                    document.getElementById('summaryText').textContent = result.analysis.summary;
+                    
+                    // Translate if English
+                    if (currentLang === 'en') {
+                        document.getElementById('loadingTitle').textContent = 'Analyzing Your File...';
+                        document.getElementById('loadingText').textContent = 'ClaimSolver AI is evaluating';
+                        document.getElementById('analysisTitle').textContent = 'Analysis Complete';
+                        document.getElementById('successLabel').textContent = 'Success Probability';
+                        document.getElementById('summaryTitle').textContent = '📝 Preliminary Assessment';
+                        document.getElementById('premiumTitle').textContent = 'Detailed Report';
+                        document.getElementById('premium1').textContent = '→ 15-20 page professional analysis';
+                        document.getElementById('premium2').textContent = '→ Legal basis and precedents';
+                        document.getElementById('premium3').textContent = '→ Strategy recommendations and timeline';
+                        document.getElementById('premium4').textContent = '→ Demand letter template';
+                        document.getElementById('premium5').textContent = '→ 7 days email support';
+                        document.getElementById('premiumBtn').textContent = 'Get Detailed Report - 4,500 TL';
+                        document.getElementById('corpTitle').textContent = 'Corporate Package';
+                        document.getElementById('corp1').textContent = '→ 20 file analyses per month';
+                        document.getElementById('corp2').textContent = '→ Unlimited email consulting';
+                        document.getElementById('corp3').textContent = '→ 2 hours video call per month';
+                        document.getElementById('corpBtn').textContent = 'Corporate Package';
+                        document.getElementById('freeTitle').textContent = '✉️ Continue Without Payment';
+                        document.getElementById('freeText').textContent = 'Our expert team will contact you within 24 hours.';
+                        document.getElementById('backHomeBtn').textContent = 'Back to Home';
+                    }
+                    
+                    document.getElementById('analysisResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                } else {
+                    // Fallback to old success message
+                    document.getElementById('loadingScreen').classList.add('hidden');
+                    document.getElementById('successMessage').classList.remove('hidden');
+                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('loadingScreen').classList.add('hidden');
+                alert(currentLang === 'tr' ? 'Bağlantı hatası. Lütfen tekrar deneyin.' : 'Connection error. Please try again.');
+                document.getElementById('contactForm').classList.remove('hidden');
+            }
         }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Bir hata oluştu. Lütfen info@claimsolver.co adresine email gönderin.');
-    }
-}
+
+        function purchasePremiumReport() {
+            alert(currentLang === 'tr' 
+                ? 'Ödeme sistemi çok yakında aktif olacak! Şimdilik info@claimsolver.co adresine email gönderin.'
+                : 'Payment system coming soon! For now, email info@claimsolver.co');
+        }
+
+        function purchaseCorporate() {
+            alert(currentLang === 'tr'
+                ? 'Kurumsal paket için info@claimsolver.co adresine email gönderin.'
+                : 'For corporate package, email info@claimsolver.co');
+        }
         
         function resetForm() {
             document.getElementById('contactForm').classList.remove('hidden');
+            document.getElementById('loadingScreen').classList.add('hidden');
+            document.getElementById('analysisResult').classList.add('hidden');
             document.getElementById('successMessage').classList.add('hidden');
             document.querySelector('form').reset();
+            document.getElementById('fileName').textContent = '';
         }
         
         function openKVKK(e) {
