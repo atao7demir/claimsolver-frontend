@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClaimSolver - Sigorta Hasar Dosya Çözümleri & Rücu Yönetim Danışmanlığı</title>
+    <link rel="icon" type="image/png" href="./assets/logo-nav.png">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -159,8 +160,16 @@
         display: block;
     }
     
-    .nav-links:not(.mobile-open) {
+    .nav-links {
         display: none;
+    }
+    
+    .nav-links.mobile-open {
+        display: flex !important;
+    }
+    
+    .lang-btn {
+        display: flex;
     }
 }
         /* Hero */
@@ -726,13 +735,13 @@
                 <span class="logo-text heading-font">ClaimSolver</span>
             </a>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
-            <div class="nav-links">
-                <a href="#home">Ana Sayfa</a>
-                <a href="#about">Hakkımızda</a>
-                <a href="#services">Hizmetlerimiz</a>
-                <a href="#contact" class="nav-cta">İletişim</a>
-                <button class="lang-btn" onclick="toggleLanguage()">🇬🇧 EN</button>
-            </div>
+<div class="nav-links">
+    <a href="#home">Ana Sayfa</a>
+    <a href="#about">Hakkımızda</a>
+    <a href="#services">Hizmetlerimiz</a>
+    <a href="#contact" class="nav-cta">İletişim</a>
+</div>
+<button class="lang-btn" onclick="toggleLanguage()">🇬🇧 EN</button>
         </div>
     </nav>
 
