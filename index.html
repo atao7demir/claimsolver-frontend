@@ -523,15 +523,23 @@ document.getElementById('descTextarea').placeholder = en ? 'Briefly describe you
             renderServices();
             renderServiceOptions();
         }
-
+        
         async function handleSubmit(e) {
             e.preventDefault();
+            // Sorgu limiti kontrolü
+const queryCount = parseInt(localStorage.getItem('cs_query_count') || '0');
+if (queryCount >= 1) {
+    alert(currentLang === 'tr' 
+        ? 'Ücretsiz analiz hakkınızı kullandınız. Detaylı rapor için info@claimsolver.co adresine yazın veya Premium Rapor satın alın.'
+        : 'You have used your free analysis. Email info@claimsolver.co or purchase a Premium Report.');
+    return;
+}
             document.getElementById('contactForm').classList.add('hidden');
             document.getElementById('loadingScreen').classList.remove('hidden');
             if (currentLang === 'en') {
     document.getElementById('loadingTitle').textContent = 'Analyzing Your File...';
     document.getElementById('loadingText').textContent = 'ClaimSolver AI is evaluating';
-    document.getElementById('loadingTimer').textContent = en ? '⏱️ This may take 30-60 seconds' : '⏱️ Bu işlem 30-60 saniye sürebilir';
+    document.getElementById('loadingTimer').textContent = currentLang === 'en' ? '⏱️ This may take 30-60 seconds' : '⏱️ Bu işlem 30-60 saniye sürebilir';
 }
             document.getElementById('loadingScreen').scrollIntoView({ behavior: 'smooth', block: 'center' });
 
@@ -549,6 +557,7 @@ document.getElementById('descTextarea').placeholder = en ? 'Briefly describe you
                 if (result.success && result.analysis) {
                     document.getElementById('loadingScreen').classList.add('hidden');
                     document.getElementById('analysisResult').classList.remove('hidden');
+                    localStorage.setItem('cs_query_count', '1');
 document.getElementById('successRate').textContent = (currentLang === 'tr' ? '%' : '') + result.analysis.successProbability + (currentLang === 'en' ? '%' : '');
 document.getElementById('summaryText').textContent = result.analysis.summary;
 
