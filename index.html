@@ -190,21 +190,21 @@
                     <div class="form-grid">
                         <div class="form-group">
                             <label class="form-label" id="nameLabel">Ad Soyad *</label>
-                            <input type="text" name="name" class="form-input" required placeholder="Adınız Soyadınız">
+                            <input type="text" name="name" class="form-input" required id="namePlaceholder" placeholder="Adınız Soyadınız">
                         </div>
                         <div class="form-group">
                             <label class="form-label" id="companyLabel">Şirket</label>
-                            <input type="text" name="company" class="form-input" placeholder="Şirket adı (opsiyonel)">
+                            <input type="text" name="company" class="form-input" id="companyPlaceholder" placeholder="Şirket adı (opsiyonel)">
                         </div>
                     </div>
                     <div class="form-grid">
                         <div class="form-group">
                             <label class="form-label" id="emailLabel">E-posta *</label>
-                            <input type="email" name="email" class="form-input" required placeholder="ornek@email.com">
+                            <input type="email" name="email" class="form-input" required id="emailPlaceholder" placeholder="ornek@email.com">
                         </div>
                         <div class="form-group">
                             <label class="form-label" id="phoneLabel">Telefon</label>
-                            <input type="tel" name="phone" class="form-input" placeholder="+90 555 000 00 00">
+                            <input type="tel" name="phone" class="form-input" id="phonePlaceholder" placeholder="+90 555 000 00 00">
                         </div>
                     </div>
                     <div class="form-group">
@@ -213,7 +213,7 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label" id="descLabel">Dosyanızı Kısaca Açıklayın *</label>
-                        <textarea name="description" class="form-input" required id="descPlaceholder"></textarea>
+                        <textarea name="description" class="form-input" required id="descTextarea" placeholder="Dosyanızı kısaca açıklayın..."></textarea>
                     </div>
                     <div class="form-group">
                         <label class="form-label" id="fileLabel">Belge Ekleyin (PDF, JPG, PNG, Word — maks 10MB)</label>
@@ -465,6 +465,11 @@
             document.getElementById('footerLegalTitle').textContent = t('Yasal', 'Legal');
             document.getElementById('footerKvkkLink').textContent = t('KVKK', 'Privacy Policy');
             document.getElementById('footerCopyright').textContent = t('© 2026 ClaimSolver. Tüm hakları saklıdır.', '© 2026 ClaimSolver. All rights reserved.');
+            document.getElementById('namePlaceholder').placeholder = en ? 'Your Full Name' : 'Adınız Soyadınız';
+document.getElementById('companyPlaceholder').placeholder = en ? 'Company name (optional)' : 'Şirket adı (opsiyonel)';
+document.getElementById('emailPlaceholder').placeholder = en ? 'example@email.com' : 'ornek@email.com';
+document.getElementById('phonePlaceholder').placeholder = en ? '+1 555 000 0000' : '+90 555 000 00 00';
+document.getElementById('descTextarea').placeholder = en ? 'Briefly describe your case...' : 'Dosyanızı kısaca açıklayın...';
 
             // Fiyatlar
             if (en) {
@@ -523,6 +528,10 @@
             e.preventDefault();
             document.getElementById('contactForm').classList.add('hidden');
             document.getElementById('loadingScreen').classList.remove('hidden');
+            if (currentLang === 'en') {
+    document.getElementById('loadingTitle').textContent = 'Analyzing Your File...';
+    document.getElementById('loadingText').textContent = 'ClaimSolver AI is evaluating';
+}
             document.getElementById('loadingScreen').scrollIntoView({ behavior: 'smooth', block: 'center' });
 
             const formData = new FormData(e.target);
@@ -539,9 +548,16 @@
                 if (result.success && result.analysis) {
                     document.getElementById('loadingScreen').classList.add('hidden');
                     document.getElementById('analysisResult').classList.remove('hidden');
-                    document.getElementById('successRate').textContent = (currentLang === 'tr' ? '%' : '') + result.analysis.successProbability + (currentLang === 'en' ? '%' : '');
-                    document.getElementById('summaryText').textContent = result.analysis.summary;
-                    document.getElementById('analysisResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+document.getElementById('successRate').textContent = (currentLang === 'tr' ? '%' : '') + result.analysis.successProbability + (currentLang === 'en' ? '%' : '');
+document.getElementById('summaryText').textContent = result.analysis.summary;
+
+// Sonuç ekranı dil güncellemesi
+const en = currentLang === 'en';
+document.getElementById('analysisTitle').textContent = en ? 'Analysis Complete' : 'Analiz Tamamlandı';
+document.getElementById('successLabel').textContent = en ? 'Success Probability' : 'Başarı İhtimali';
+document.getElementById('summaryTitle').textContent = en ? '📝 Preliminary Assessment' : '📝 Ön Değerlendirme';
+
+document.getElementById('analysisResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
                 } else if (!result.success && result.error) {
                     document.getElementById('loadingScreen').classList.add('hidden');
                     alert(result.error);
