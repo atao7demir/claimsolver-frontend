@@ -245,7 +245,7 @@
                     <div class="loading-spinner"><div class="spinner"></div></div>
                     <h2 class="success-title heading-font" id="loadingTitle">Dosyanız Analiz Ediliyor...</h2>
                     <p class="success-text" id="loadingText">ClaimSolver AI değerlendirme yapıyor</p>
-                    <p style="margin-top: 1rem; color: #64748b; font-size: 0.875rem;">⏱️ Bu işlem 30-60 saniye sürebilir</p>
+                    <p style="margin-top: 1rem; color: #64748b; font-size: 0.875rem;" id="loadingTimer">⏱️ Bu işlem 30-60 saniye sürebilir</p>
                 </div>
             </div>
 
@@ -531,6 +531,7 @@ document.getElementById('descTextarea').placeholder = en ? 'Briefly describe you
             if (currentLang === 'en') {
     document.getElementById('loadingTitle').textContent = 'Analyzing Your File...';
     document.getElementById('loadingText').textContent = 'ClaimSolver AI is evaluating';
+    document.getElementById('loadingTimer').textContent = en ? '⏱️ This may take 30-60 seconds' : '⏱️ Bu işlem 30-60 saniye sürebilir';
 }
             document.getElementById('loadingScreen').scrollIntoView({ behavior: 'smooth', block: 'center' });
 
