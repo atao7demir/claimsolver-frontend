@@ -278,64 +278,90 @@
             </div>
 
             <div id="analysisResult" class="hidden">
-                <div class="success-box" style="max-width: 900px;">
-                    <div class="success-icon" style="background: #dcfce7;">✓</div>
-                    <h2 class="success-title heading-font" id="analysisTitle">Analysis Complete</h2>
-                    <div style="margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); border-radius: 1rem;">
-                        <div style="font-size: 3rem; font-weight: bold; color: #d4af37; margin-bottom: 0.5rem;" id="successRate">--</div>
-                        <div style="color: white; font-size: 1.125rem;" id="successLabel">Success Probability</div>
+    <div class="success-box" style="max-width: 900px;">
+        <div class="success-icon" style="background: #dcfce7;">✓</div>
+        <h2 class="success-title heading-font" id="analysisTitle">Analysis Complete</h2>
+
+        <!-- Success Rate -->
+        <div style="margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); border-radius: 1rem;">
+            <div style="font-size: 3rem; font-weight: bold; color: #d4af37; margin-bottom: 0.5rem;" id="successRate">--</div>
+            <div style="color: white; font-size: 1.125rem;" id="successLabel">Success Probability</div>
+        </div>
+
+        <!-- Summary -->
+        <div style="background: #eff6ff; padding: 1.5rem; border-radius: 0.75rem; border-left: 4px solid #1e3a8a; margin-bottom: 2rem; text-align: left;">
+            <h3 style="font-size: 1.125rem; font-weight: bold; color: #0f172a; margin-bottom: 1rem;" id="summaryTitle">📝 Preliminary Assessment</h3>
+            <p style="color: #475569; line-height: 1.75; font-size: 1.0625rem;" id="summaryText">...</p>
+        </div>
+
+        <!-- Premium Report -->
+        <div style="border: 2px solid #1e3a8a; border-radius: 1rem; padding: 2rem; margin-bottom: 1.5rem; background: white; text-align: left;">
+            <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 2rem;">💎</div>
+                <div style="flex: 1;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <h3 style="font-size: 1.5rem; font-weight: bold; color: #0f172a;" id="premiumTitle">Premium Report</h3>
                     </div>
-                    <div style="background: #eff6ff; padding: 1.5rem; border-radius: 0.75rem; border-left: 4px solid #1e3a8a; margin-bottom: 2rem; text-align: left;">
-                        <h3 style="font-size: 1.125rem; font-weight: bold; color: #0f172a; margin-bottom: 1rem;" id="summaryTitle">📝 Preliminary Assessment</h3>
-                        <p style="color: #475569; line-height: 1.75; font-size: 1.0625rem;" id="summaryText">...</p>
-                    </div>
-                    <div style="border: 2px solid #1e3a8a; border-radius: 1rem; padding: 2rem; margin-bottom: 1.5rem; background: white; text-align: left;">
-                        <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem;">
-                            <div style="font-size: 2rem;">💎</div>
-                            <div style="flex: 1;">
-                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                                    <h3 style="font-size: 1.5rem; font-weight: bold; color: #0f172a;" id="premiumTitle">Detailed Report</h3>
-                                    <span class="early-badge" id="earlyBadge">Early Access</span>
-                                </div>
-                                <div style="margin-bottom: 1rem;">
-                                    <span class="price-original" id="priceOriginal">$125</span>
-                                    <span style="font-size: 1.875rem; font-weight: bold; color: #1e3a8a;" id="priceNew">$49</span>
-                                    <span style="font-size: 0.875rem; color: #64748b;" id="priceUsd">(Early Access Price)</span>
-                                </div>
-                                <ul style="list-style: none; padding: 0; margin: 0;">
-                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium1">→ 15-20 page professional analysis</li>
-                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium2">→ Legal basis and precedents</li>
-                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium3">→ Strategy recommendations and timeline</li>
-                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium4">→ Demand letter template</li>
-                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium5">→ 7 days email support</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <button class="submit-btn" onclick="purchasePremiumReport()" id="premiumBtn">Get Detailed Report - $49</button>
-                    </div>
-                    <div style="border: 2px solid #cbd5e1; border-radius: 1rem; padding: 2rem; margin-bottom: 1.5rem; background: #f8fafc; text-align: left;">
-                        <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem;">
-                            <div style="font-size: 2rem;">📦</div>
-                            <div style="flex: 1;">
-                                <h3 style="font-size: 1.25rem; font-weight: bold; color: #0f172a; margin-bottom: 0.5rem;" id="corpTitle">Corporate Package</h3>
-                                <div style="font-size: 1.5rem; font-weight: bold; color: #475569; margin-bottom: 1rem;" id="corpPrice">$235/mo <span style="font-size: 0.875rem; color: #94a3b8;">(Early Access: $99/mo)</span></div>
-                                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.875rem;">
-                                    <li style="padding: 0.375rem 0; color: #64748b;" id="corp1">→ 20 file analyses per month</li>
-                                    <li style="padding: 0.375rem 0; color: #64748b;" id="corp2">→ Unlimited email consulting</li>
-                                    <li style="padding: 0.375rem 0; color: #64748b;" id="corp3">→ 2 hours video call per month</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <button class="submit-btn" onclick="purchaseCorporate()" style="background: #475569;" id="corpBtn">Corporate Package - Contact Us</button>
-                    </div>
-                    <div style="text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 0.75rem;">
-                        <h4 style="font-size: 1rem; font-weight: 600; color: #0f172a; margin-bottom: 0.5rem;" id="freeTitle">✉️ Continue Without Payment</h4>
-                        <p style="color: #64748b; font-size: 0.875rem; margin-bottom: 1rem;" id="freeText">Our expert team will contact you within 24 hours.</p>
-                        <div style="margin-bottom: 1rem;"><a href="mailto:info@claimsolver.co" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">info@claimsolver.co</a></div>
-                        <a href="#home" class="back-btn" onclick="resetForm()" id="backHomeBtn">Back to Home</a>
-                    </div>
+                    <div style="font-size: 1.875rem; font-weight: bold; color: #1e3a8a; margin-bottom: 1rem;" id="premiumPrice">$100 </div>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.5rem 0; color: #475569;" id="premium1">→ Full case-specific consulting report</li>
+                        <li style="padding: 0.5rem 0; color: #475569;" id="premium2">→ How to recover rejected claims</li>
+                        <li style="padding: 0.5rem 0; color: #475569;" id="premium3">→ Legal basis & precedent decisions</li>
+                        <li style="padding: 0.5rem 0; color: #475569;" id="premium4">→ Demand letter template</li>
+                        <li style="padding: 0.5rem 0; color: #475569;" id="premium5">→ Delivered within 24 hours</li>
+                    </ul>
                 </div>
             </div>
+            <button class="submit-btn" onclick="purchasePremiumReport()" id="premiumBtn">Get Premium Report — $100</button>
+        </div>
+
+        <!-- Subscribe -->
+        <div style="border: 2px solid #d4af37; border-radius: 1rem; padding: 2rem; margin-bottom: 1.5rem; background: #fffbeb; text-align: left;">
+            <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 2rem;">🔁</div>
+                <div style="flex: 1;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: bold; color: #0f172a;" id="corpTitle">Subscribe</h3>
+                        <span style="background:#d4af37;color:#0f172a;font-size:0.75rem;font-weight:bold;padding:0.2rem 0.6rem;border-radius:999px;" id="bestBadge">Best Value</span>
+                    </div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #92400e; margin-bottom: 1rem;" id="corpPrice">$750 </div>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.875rem;">
+                        <li style="padding: 0.375rem 0; color: #64748b;" id="corp1">→ Up to 10 file analyses per month</li>
+                        <li style="padding: 0.375rem 0; color: #64748b;" id="corp2">→ Real-time communication during & after claims</li>
+                        <li style="padding: 0.375rem 0; color: #64748b;" id="corp3">→ Priority support & dedicated account handling</li>
+                    </ul>
+                </div>
+            </div>
+            <button class="submit-btn" onclick="purchaseCorporate()" style="background: linear-gradient(135deg, #92400e, #d4af37);" id="corpBtn">Subscribe — $750/mo</button>
+        </div>
+
+        <!-- Outsourcing -->
+        <div style="border: 2px solid #cbd5e1; border-radius: 1rem; padding: 2rem; margin-bottom: 1.5rem; background: #f8fafc; text-align: left;">
+            <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 2rem;">🤝</div>
+                <div style="flex: 1;">
+                    <h3 style="font-size: 1.25rem; font-weight: bold; color: #0f172a; margin-bottom: 0.5rem;" id="outsourceTitle">Outsourcing / Success Fee</h3>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #475569; margin-bottom: 1rem;" id="outsourcePrice">10% <span style="font-size:0.875rem;color:#64748b;" id="outsourcePriceSub">of recovered amount</span></div>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.875rem;">
+                        <li style="padding: 0.375rem 0; color: #64748b;" id="out1">→ Direct negotiation with insurance companies</li>
+                        <li style="padding: 0.375rem 0; color: #64748b;" id="out2">→ Full recovery process management</li>
+                        <li style="padding: 0.375rem 0; color: #64748b;" id="out3">→ No upfront cost — pay only on success</li>
+                    </ul>
+                </div>
+            </div>
+            <button class="submit-btn" onclick="purchaseOutsourcing()" style="background: #475569;" id="outsourceBtn">Contact Us — Get a Quote</button>
+        </div>
+
+        <!-- Free Continue -->
+        <div style="text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 0.75rem;">
+            <h4 style="font-size: 1rem; font-weight: 600; color: #0f172a; margin-bottom: 0.5rem;" id="freeTitle">✉️ Not ready to purchase?</h4>
+            <p style="color: #64748b; font-size: 0.875rem; margin-bottom: 1rem;" id="freeText">Contact us — we'll get back to you within 24 hours.</p>
+            <a href="mailto:info@claimsolver.co" style="display:inline-block;padding:0.75rem 2rem;background:#eff6ff;color:#1e3a8a;border-radius:0.5rem;font-weight:600;text-decoration:none;margin-bottom:1rem;">✉️ info@claimsolver.co</a>
+            <br>
+            <a href="#home" class="back-btn" onclick="resetForm()" id="backHomeBtn">Back to Home</a>
+        </div>
+    </div>
+</div>
 
             <div id="successMessage" class="hidden">
                 <div class="success-box">
@@ -632,26 +658,30 @@ document.getElementById('descTextarea').placeholder = en ? 'Briefly describe you
 
             // Prices
             if (en) {
-                document.getElementById('priceOriginal').textContent = '$125';
-                document.getElementById('priceNew').textContent = '$49';
-                document.getElementById('priceUsd').textContent = '(Early Access Price)';
-                document.getElementById('corpPrice').innerHTML = '$235/mo <span style="font-size:0.875rem;color:#94a3b8;">(Early Access: $99/mo)</span>';
-                document.getElementById('premiumBtn').textContent = 'Get Detailed Report - $49';
-                document.getElementById('premiumTitle').textContent = 'Detailed Report';
-                document.getElementById('premium1').textContent = '→ 15-20 page professional analysis';
-                document.getElementById('premium2').textContent = '→ Legal basis and precedents';
-                document.getElementById('premium3').textContent = '→ Strategy recommendations and timeline';
+                document.getElementById('premiumTitle').textContent = 'Premium Report';
+                document.getElementById('premiumPrice').textContent = '$100';
+                document.getElementById('premiumBtn').textContent = 'Get Premium Report — $100';
+                document.getElementById('premium1').textContent = '→ Full case-specific consulting report';
+                document.getElementById('premium2').textContent = '→ How to recover rejected claims';
+                document.getElementById('premium3').textContent = '→ Legal basis & precedent decisions';
                 document.getElementById('premium4').textContent = '→ Demand letter template';
-                document.getElementById('premium5').textContent = '→ 7 days email support';
-                document.getElementById('corpTitle').textContent = 'Corporate Package';
-                document.getElementById('corp1').textContent = '→ 20 file analyses per month';
-                document.getElementById('corp2').textContent = '→ Unlimited email consulting';
-                document.getElementById('corp3').textContent = '→ 2 hours video call per month';
-                document.getElementById('corpBtn').textContent = 'Corporate Package - Contact Us';
-                document.getElementById('freeTitle').textContent = '✉️ Continue Without Payment';
-                document.getElementById('freeText').textContent = 'Our expert team will contact you within 24 hours.';
+                document.getElementById('premium5').textContent = '→ Delivered within 24 hours';
+                document.getElementById('corpTitle').textContent = 'Subscribe';
+                document.getElementById('corpPrice').textContent = '$750 / month';
+                document.getElementById('corp1').textContent = '→ Up to 10 file analyses per month';
+                document.getElementById('corp2').textContent = '→ Real-time communication during & after claims';
+                document.getElementById('corp3').textContent = '→ Priority support & dedicated account handling';
+                document.getElementById('corpBtn').textContent = 'Subscribe — $750/mo';
+                document.getElementById('bestBadge').textContent = 'Best Value';
+                document.getElementById('outsourceTitle').textContent = 'Outsourcing / Success Fee';
+                document.getElementById('outsourcePrice').innerHTML = '10% <span style="font-size:0.875rem;color:#64748b;">of recovered amount</span>';
+                document.getElementById('out1').textContent = '→ Direct negotiation with insurance companies';
+                document.getElementById('out2').textContent = '→ Full recovery process management';
+                document.getElementById('out3').textContent = '→ No upfront cost — pay only on success';
+                document.getElementById('outsourceBtn').textContent = 'Contact Us — Get a Quote';
+                document.getElementById('freeTitle').textContent = '✉️ Not ready to purchase?';
+                document.getElementById('freeText').textContent = "Contact us — we'll get back to you within 24 hours.";
                 document.getElementById('backHomeBtn').textContent = 'Back to Home';
-                document.getElementById('earlyBadge').textContent = 'Early Access';
                 document.getElementById('analysisTitle').textContent = 'Analysis Complete';
                 document.getElementById('successLabel').textContent = 'Success Probability';
                 document.getElementById('summaryTitle').textContent = '📝 Preliminary Assessment';
@@ -659,26 +689,30 @@ document.getElementById('descTextarea').placeholder = en ? 'Briefly describe you
                 document.getElementById('loadingText').textContent = 'ClaimSolver AI is evaluating';
                 document.getElementById('loadingTimer').textContent = '⏱️ This may take 30-60 seconds';
             } else {
-                document.getElementById('priceOriginal').textContent = '4,500 TL';
-                document.getElementById('priceNew').textContent = '1,990 TL';
-                document.getElementById('priceUsd').textContent = '(~$55)';
-                document.getElementById('corpPrice').innerHTML = '8,500 TL/ay <span style="font-size:0.875rem;color:#94a3b8;">(~$235/ay)</span>';
-                document.getElementById('premiumBtn').textContent = 'Detaylı Rapor Al - 1,990 TL';
-                document.getElementById('premiumTitle').textContent = 'Detaylı Rapor';
-                document.getElementById('premium1').textContent = '→ 15-20 sayfa profesyonel analiz';
-                document.getElementById('premium2').textContent = '→ Hukuki dayanak ve emsal kararlar';
-                document.getElementById('premium3').textContent = '→ Strateji önerileri ve timeline';
-                document.getElementById('premium4').textContent = '→ Demand letter şablonu';
-                document.getElementById('premium5').textContent = '→ 7 gün email destek';
-                document.getElementById('corpTitle').textContent = 'Kurumsal Paket';
-                document.getElementById('corp1').textContent = '→ Aylık 20 dosya analizi';
-                document.getElementById('corp2').textContent = '→ Sınırsız email danışmanlık';
-                document.getElementById('corp3').textContent = '→ Aylık 2 saat video görüşme';
-                document.getElementById('corpBtn').textContent = 'Kurumsal Paket - İletişime Geç';
-                document.getElementById('freeTitle').textContent = '✉️ Ödeme Yapmadan Devam Et';
-                document.getElementById('freeText').textContent = 'Uzman ekibimiz 24 saat içinde sizinle iletişime geçecektir.';
+                document.getElementById('premiumTitle').textContent = 'Premium Rapor';
+                document.getElementById('premiumPrice').textContent = '$100';
+                document.getElementById('premiumBtn').textContent = 'Premium Rapor Al — $100';
+                document.getElementById('premium1').textContent = '→ Dosyaya özel danışmanlık raporu';
+                document.getElementById('premium2').textContent = '→ Ret edilen hasarlar nasıl alınır';
+                document.getElementById('premium3').textContent = '→ Hukuki dayanak ve emsal kararlar';
+                document.getElementById('premium4').textContent = '→ Talep mektubu şablonu';
+                document.getElementById('premium5').textContent = '→ 24 saat içinde teslim';
+                document.getElementById('corpTitle').textContent = 'Abonelik';
+                document.getElementById('corpPrice').textContent = '$750 / ay';
+                document.getElementById('corp1').textContent = '→ Aylık 10 dosyaya kadar analiz';
+                document.getElementById('corp2').textContent = '→ Hasar anında ve sonrasında anlık iletişim';
+                document.getElementById('corp3').textContent = '→ Öncelikli destek ve özel hesap yönetimi';
+                document.getElementById('corpBtn').textContent = 'Abone Ol — $750/ay';
+                document.getElementById('bestBadge').textContent = 'En İyi Değer';
+                document.getElementById('outsourceTitle').textContent = 'Outsourcing / Başarı Primi';
+                document.getElementById('outsourcePrice').innerHTML = '%10 <span style="font-size:0.875rem;color:#64748b;">tahsil edilen tutardan</span>';
+                document.getElementById('out1').textContent = '→ Sigorta şirketleriyle birebir görüşme';
+                document.getElementById('out2').textContent = '→ Tam rücu süreci yönetimi';
+                document.getElementById('out3').textContent = '→ Ön ödeme yok — sadece başarıda ödeme';
+                document.getElementById('outsourceBtn').textContent = 'İletişime Geç — Teklif Al';
+                document.getElementById('freeTitle').textContent = '✉️ Satın almaya hazır değil misiniz?';
+                document.getElementById('freeText').textContent = 'Bize yazın — 24 saat içinde size geri döneceğiz.';
                 document.getElementById('backHomeBtn').textContent = 'Ana Sayfaya Dön';
-                document.getElementById('earlyBadge').textContent = 'Early Access';
                 document.getElementById('analysisTitle').textContent = 'Analiz Tamamlandı';
                 document.getElementById('successLabel').textContent = 'Başarı İhtimali';
                 document.getElementById('summaryTitle').textContent = '📝 Ön Değerlendirme';
@@ -724,6 +758,7 @@ document.getElementById('descTextarea').placeholder = en ? 'Briefly describe you
                     document.getElementById('loadingScreen').classList.add('hidden');
                     document.getElementById('analysisResult').classList.remove('hidden');
                     localStorage.setItem('cs_query_count', '1');
+                    window.lastSubmissionId = result.submissionId || '';
                     const en = currentLang === 'en';
                     document.getElementById('successRate').textContent = (en ? '' : '%') + result.analysis.successProbability + (en ? '%' : '');
                     document.getElementById('summaryText').textContent = result.analysis.summary;
@@ -747,17 +782,17 @@ document.getElementById('descTextarea').placeholder = en ? 'Briefly describe you
             }
         }
 
-        function purchasePremiumReport() {
-            alert(currentLang === 'en'
-                ? 'Payment system coming soon! For now, email info@claimsolver.co'
-                : 'Ödeme sistemi çok yakında aktif olacak! Şimdilik info@claimsolver.co adresine email gönderin.');
-        }
+       function purchasePremiumReport() {
+    window.location.href = 'mailto:info@claimsolver.co?subject=Premium Report Request&body=Hello, I would like to purchase a Premium Report. My submission ID is: ' + (window.lastSubmissionId || '');
+}
 
-        function purchaseCorporate() {
-            alert(currentLang === 'en'
-                ? 'For corporate package, email info@claimsolver.co'
-                : 'Kurumsal paket için info@claimsolver.co adresine email gönderin.');
-        }
+function purchaseCorporate() {
+    window.location.href = 'mailto:info@claimsolver.co?subject=Subscribe Plan Inquiry&body=Hello, I am interested in the Subscribe plan ($750/mo). Please contact me.';
+}
+
+function purchaseOutsourcing() {
+    window.location.href = 'mailto:info@claimsolver.co?subject=Outsourcing%2FSuccess Fee Inquiry&body=Hello, I would like to discuss the Outsourcing/Success Fee option. Please contact me.';
+}
 
         function resetForm() {
             document.getElementById('contactForm').classList.remove('hidden');
