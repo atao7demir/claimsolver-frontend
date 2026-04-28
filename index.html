@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClaimSolver - Sigorta Hasar Dosya Çözümleri & Rücu Yönetim Danışmanlığı</title>
+    <title>ClaimSolver - Insurance Claim Solutions & Subrogation Management</title>
+    <meta name="description" content="AI-powered insurance claim file management and subrogation consulting. Get your free analysis in minutes.">
     <link rel="icon" type="image/png" href="./assets/logo-nav.png">
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EVDP9LBLBG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-EVDP9LBLBG');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVDP9LBLBG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EVDP9LBLBG');
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Open Sans', sans-serif; -webkit-font-smoothing: antialiased; color: #334155; overflow-x: hidden; }
         .heading-font { font-family: 'Merriweather', serif; }
-        .navy-bg { background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); }
         .gold-accent { color: #d4af37; }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
@@ -75,11 +75,11 @@
         .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
         .file-upload { border: 2px dashed #cbd5e1; padding: 2rem; text-align: center; border-radius: 0.5rem; cursor: pointer; transition: all 0.3s; background: #f8fafc; }
         .file-upload:hover { border-color: #1e3a8a; background: #eff6ff; }
-        .kvkk-box { background: #f8fafc; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1.5rem; }
-        .kvkk-label { display: flex; align-items: start; gap: 0.75rem; cursor: pointer; }
-        .kvkk-checkbox { margin-top: 0.25rem; width: 1.25rem; height: 1.25rem; }
-        .kvkk-link { color: #1e3a8a; font-weight: 600; text-decoration: none; }
-        .kvkk-link:hover { text-decoration: underline; }
+        .checkbox-group { background: #f8fafc; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem; }
+        .checkbox-label { display: flex; align-items: start; gap: 0.75rem; cursor: pointer; font-size: 0.875rem; color: #475569; line-height: 1.5; }
+        .checkbox-label input { margin-top: 0.2rem; width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
+        .checkbox-label a { color: #1e3a8a; font-weight: 600; text-decoration: none; }
+        .checkbox-label a:hover { text-decoration: underline; }
         .submit-btn { width: 100%; padding: 1rem; background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); color: white; font-size: 1.125rem; font-weight: bold; border: none; border-radius: 0.5rem; cursor: pointer; transition: opacity 0.3s; }
         .submit-btn:hover { opacity: 0.9; }
         .email-contact { text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e2e8f0; }
@@ -90,8 +90,8 @@
         .footer-title { font-size: 1.125rem; font-weight: bold; margin-bottom: 1rem; }
         .footer-text { color: #cbd5e1; line-height: 1.75; }
         .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 0.5rem; color: #cbd5e1; }
-        .footer-link { color: #cbd5e1; text-decoration: none; transition: color 0.3s; }
+        .footer-links li { margin-bottom: 0.5rem; }
+        .footer-link { color: #cbd5e1; text-decoration: none; transition: color 0.3s; cursor: pointer; background: none; border: none; font-size: 1rem; padding: 0; }
         .footer-link:hover { color: white; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align: center; color: #94a3b8; }
         .success-box { max-width: 768px; margin: 0 auto; background: white; padding: 3rem; border-radius: 1rem; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-top: 4px solid #16a34a; text-align: center; }
@@ -108,11 +108,16 @@
         .modal-content { background: white; border-radius: 1rem; max-width: 768px; width: 100%; padding: 2rem; max-height: 90vh; overflow-y: auto; }
         .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
         .modal-title { font-size: 1.5rem; font-weight: bold; color: #0f172a; }
-        .modal-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #64748b; padding: 0.5rem; border-radius: 0.5rem; transition: background 0.3s; }
+        .modal-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #64748b; padding: 0.5rem; border-radius: 0.5rem; }
         .modal-close:hover { background: #f8fafc; }
-        .kvkk-section { margin-bottom: 1.5rem; }
-        .kvkk-section-title { font-size: 1.125rem; font-weight: bold; color: #0f172a; margin-bottom: 0.75rem; }
-        .kvkk-section-text { color: #475569; line-height: 1.75; }
+        .modal-section { margin-bottom: 1.5rem; }
+        .modal-section h3 { font-size: 1rem; font-weight: bold; color: #0f172a; margin-bottom: 0.5rem; }
+        .modal-section p { color: #475569; line-height: 1.75; font-size: 0.9rem; }
+        .modal-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .modal-tab { padding: 0.5rem 1rem; border-radius: 0.5rem; border: 1px solid #cbd5e1; background: white; cursor: pointer; font-size: 0.875rem; font-weight: 600; }
+        .modal-tab.active { background: #1e3a8a; color: white; border-color: #1e3a8a; }
+        .modal-body { display: none; }
+        .modal-body.active { display: block; }
         @media (max-width: 768px) {
             .hero-title { font-size: 2rem; }
             .hero-subtitle { font-size: 1.75rem; }
@@ -134,46 +139,46 @@
             </a>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
             <div class="nav-links">
-                <a href="#home" id="navHome">Ana Sayfa</a>
-                <a href="#about" id="navAbout">Hakkımızda</a>
-                <a href="#services" id="navServices">Hizmetlerimiz</a>
-                <a href="#contact" class="nav-cta" id="navContact">İletişim</a>
+                <a href="#home" id="navHome">Home</a>
+                <a href="#about" id="navAbout">About</a>
+                <a href="#services" id="navServices">Services</a>
+                <a href="#contact" class="nav-cta" id="navContact">Contact</a>
             </div>
             <button class="lang-btn" onclick="toggleLanguage()">
-                <img src="https://flagcdn.com/w20/gb.png" alt="EN" style="width: 20px; height: 15px;"> EN
+                <img src="https://flagcdn.com/w20/tr.png" alt="TR" style="width: 20px; height: 15px;"> TR
             </button>
         </div>
     </nav>
 
     <section id="home" class="hero">
         <div class="container">
-            <p class="hero-tagline" id="tagline">Sigorta Hasar Dosya Çözümleri & Rücu Yönetim Danışmanlığı</p>
-            <h1 class="hero-title heading-font" id="slogan1">Her dosyanın bir çözümü vardır.</h1>
-            <h2 class="hero-subtitle heading-font gold-accent" id="slogan2">Çözüm biziz.</h2>
-            <a href="#contact" class="hero-cta" id="heroCta">Ücretsiz Analiz Başlat →</a>
+            <p class="hero-tagline" id="tagline">Insurance Claim Solutions & Subrogation Management Consulting</p>
+            <h1 class="hero-title heading-font" id="slogan1">Every claim has a solution.</h1>
+            <h2 class="hero-subtitle heading-font gold-accent" id="slogan2">We are the solution.</h2>
+            <a href="#contact" class="hero-cta" id="heroCta">Start Free Analysis →</a>
             <div class="hero-stats">
-                <div><div class="stat-number" id="stat1">1000+ Dosya</div></div>
-                <div><div class="stat-number gold-accent" id="stat2">%85 Başarı</div></div>
-                <div><div class="stat-number" id="stat3">24 Saat Yanıt</div></div>
+                <div><div class="stat-number" id="stat1">1000+ Cases</div></div>
+                <div><div class="stat-number gold-accent" id="stat2">85% Success</div></div>
+                <div><div class="stat-number" id="stat3">24h Response</div></div>
             </div>
         </div>
     </section>
 
     <section id="about">
         <div class="container">
-            <h2 class="section-title heading-font" id="aboutTitle">Hakkımızda</h2>
-            <p class="about-intro" id="aboutIntro">ClaimSolver, sigorta sektörüne özel hasar dosyası yönetimi ve rücu danışmanlığı hizmetleri sunan bağımsız bir platformdur.</p>
+            <h2 class="section-title heading-font" id="aboutTitle">About Us</h2>
+            <p class="about-intro" id="aboutIntro">ClaimSolver is an independent platform providing specialized claim file management and subrogation consulting services for the insurance sector.</p>
             <div class="about-grid">
-                <p class="about-text" id="aboutP1">Oto ve oto dışı tüm branşlardaki hasar dosyalarında, özellikle tahsil edilemeyen veya çözümsüz görülen durumlarda devreye girer; süreci sonuca ulaştırana kadar takibi bırakmaz.</p>
-                <p class="about-text" id="aboutP2">Değer kaybı, hasar farkı, kusur değişimi talepleri gibi trafik kaynaklı dosyaların yanı sıra, CMR ve FFL teminatlı uluslararası taşımacılık kaynaklı karmaşık rücu süreçlerinde de etkin çözümler sunar.</p>
-                <p class="about-text" id="aboutP3">SEGEM sertifikalı ve sektörel deneyime sahip uzman kadrosuyla, sigortalıdan eksperine, eksperden tahsilata kadar olan tüm süreci bütüncül bir yaklaşımla ele alır.</p>
-                <p class="about-text" id="aboutP4">Rücu dosyalarındaki iletişim, belge inceleme ve ısrarlı takip sayesinde kayıp gibi görünen bedellerin tahsilatını mümkün kılar, yalnızca hasarı değil, sürecin tamamını yönetir.</p>
+                <p class="about-text" id="aboutP1">We intervene in all branches of auto and non-auto claim files, especially in cases deemed uncollectible or unsolvable; we never abandon the process until it reaches resolution.</p>
+                <p class="about-text" id="aboutP2">In addition to traffic-related files such as diminished value, claim differences, and fault modification requests, we provide effective solutions in complex subrogation processes involving CMR and FFL covered international transportation.</p>
+                <p class="about-text" id="aboutP3">Specialists with 10+ years in international insurance claims, CMR/FFL subrogation, and cross-border recovery — managing every step from first notice to final collection.</p>
+                <p class="about-text" id="aboutP4">Through communication, document review, and persistent follow-up in subrogation files, we make it possible to collect amounts that appear lost, managing not only the damage but the entire process.</p>
             </div>
             <div class="ai-box">
                 <div class="ai-icon">⚡</div>
                 <div>
-                    <h3 class="ai-title heading-font" id="aiTitle">Yapay Zeka Destekli Analiz</h3>
-                    <p class="ai-text" id="aiText">Yapay zeka destekli analiz motoru ile dosya değerlendirmesi 5 dakikadan kısa sürede tamamlanır; uzman ekip 24 saat içinde detaylı rapor sunar. Binlerce dosya verisiyle eğitilmiş AI sistemimiz, başarı oranını tahmin eder, stratejik öneriler sunar ve süreci hızlandırır.</p>
+                    <h3 class="ai-title heading-font" id="aiTitle">AI-Powered Analysis</h3>
+                    <p class="ai-text" id="aiText">Our AI-powered analysis engine completes file evaluation in less than 5 minutes; expert team delivers detailed reports within 24 hours. Trained on thousands of case files, our AI system predicts success rates, provides strategic recommendations, and accelerates the process.</p>
                 </div>
             </div>
         </div>
@@ -181,8 +186,8 @@
 
     <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title heading-font" id="servicesTitle">Hizmetlerimiz</h2>
-            <p class="section-subtitle" id="servicesSubtitle">Her dosya türü için profesyonel çözüm</p>
+            <h2 class="section-title heading-font" id="servicesTitle">Our Services</h2>
+            <p class="section-subtitle" id="servicesSubtitle">Professional solutions for every case type</p>
             <div class="services-grid" id="servicesGrid"></div>
         </div>
     </section>
@@ -192,57 +197,72 @@
             <div id="contactForm">
                 <form class="contact-form" onsubmit="handleSubmit(event)">
                     <div style="text-align: center; margin-bottom: 2.5rem;">
-                        <h2 class="section-title heading-font" id="contactTitle">Ücretsiz Analiz Başvurusu</h2>
-                        <p class="section-subtitle" id="contactSubtitle">24 saat içinde size geri dönüş yapacağız</p>
+                        <h2 class="section-title heading-font" id="contactTitle">Free Analysis Application</h2>
+                        <p class="section-subtitle" id="contactSubtitle">We will respond within 24 hours</p>
                     </div>
                     <div class="form-grid">
                         <div class="form-group">
-                            <label class="form-label" id="nameLabel">Ad Soyad *</label>
-                            <input type="text" name="name" class="form-input" required id="namePlaceholder" placeholder="Adınız Soyadınız">
+                            <label class="form-label" id="nameLabel">Full Name *</label>
+                            <input type="text" name="name" class="form-input" required id="namePlaceholder" placeholder="Your Full Name">
                         </div>
                         <div class="form-group">
-                            <label class="form-label" id="companyLabel">Şirket</label>
-                            <input type="text" name="company" class="form-input" id="companyPlaceholder" placeholder="Şirket adı (opsiyonel)">
+                            <label class="form-label" id="companyLabel">Company</label>
+                            <input type="text" name="company" class="form-input" id="companyPlaceholder" placeholder="Company name (optional)">
                         </div>
                     </div>
                     <div class="form-grid">
                         <div class="form-group">
-                            <label class="form-label" id="emailLabel">E-posta *</label>
-                            <input type="email" name="email" class="form-input" required id="emailPlaceholder" placeholder="ornek@email.com">
+                            <label class="form-label" id="emailLabel">Email *</label>
+                            <input type="email" name="email" class="form-input" required id="emailPlaceholder" placeholder="example@email.com">
                         </div>
                         <div class="form-group">
-                            <label class="form-label" id="phoneLabel">Telefon</label>
-                            <input type="tel" name="phone" class="form-input" id="phonePlaceholder" placeholder="+90 555 000 00 00">
+                            <label class="form-label" id="phoneLabel">Phone</label>
+                            <input type="tel" name="phone" class="form-input" id="phonePlaceholder" placeholder="+1 555 000 0000">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" id="serviceLabel">Hizmet Türü *</label>
+                        <label class="form-label" id="serviceLabel">Service Type *</label>
                         <select name="serviceType" class="form-input" required id="serviceSelect"></select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" id="descLabel">Dosyanızı Kısaca Açıklayın *</label>
-                        <textarea name="description" class="form-input" required id="descTextarea" placeholder="Dosyanızı kısaca açıklayın..."></textarea>
+                        <label class="form-label" id="descLabel">Briefly Describe Your Case *</label>
+                        <textarea name="description" class="form-input" required id="descTextarea" placeholder="Briefly describe your case..."></textarea>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" id="fileLabel">Belge Ekleyin (PDF, JPG, PNG, Word — maks 10MB)</label>
+                        <label class="form-label" id="fileLabel">Upload Document (PDF, JPG, PNG, Word — max 10MB)</label>
                         <div class="file-upload">
                             <input type="file" name="file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" style="display: none;" id="fileInput">
-                            <label for="fileInput" style="cursor: pointer;" id="fileUploadLabel">📄 Dosya Seç</label>
+                            <label for="fileInput" style="cursor: pointer;" id="fileUploadLabel">📄 Choose File</label>
                         </div>
                         <div id="fileName" style="margin-top: 0.5rem; color: #1e3a8a; font-size: 0.875rem;"></div>
                     </div>
-                    <div class="kvkk-box">
-                        <label class="kvkk-label">
-                            <input type="checkbox" class="kvkk-checkbox" required>
-                            <span id="kvkkLabel">KVKK Aydınlatma Metni'ni okudum, onaylıyorum — <a href="#" class="kvkk-link" onclick="openKVKK(event)">KVKK Metni</a></span>
+
+                    <!-- Checkboxes -->
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" required id="check1">
+                            <span id="check1Label">I agree to the processing of my personal data in accordance with the <a href="#" onclick="openModal('privacy', event)">Privacy Policy</a>. *</span>
                         </label>
                     </div>
-                    <div style="background: #eff6ff; padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #1e3a8a; margin-bottom: 1.5rem;">
-                        <p style="font-size: 0.875rem; color: #475569;" id="contactNote">İlk analiz tamamen ücretsizdir. Detaylı raporlar için fiyatlandırma dosyanızın durumuna göre belirlenir.</p>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" required id="check2">
+                            <span id="check2Label">I have read the <a href="#" onclick="openModal('terms', event)">Terms of Service</a>. I acknowledge that digital reports are instantly performed services and are exempt from the right of withdrawal. *</span>
+                        </label>
                     </div>
-                    <button type="submit" class="submit-btn" id="submitBtn">Gönder →</button>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="check3">
+                            <span id="check3Label">I agree to receive commercial communications about updates and sector analyses. (Optional)</span>
+                        </label>
+                    </div>
+
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #1e3a8a; margin-bottom: 1.5rem; margin-top: 1rem;">
+                        <p style="font-size: 0.875rem; color: #475569;" id="contactNote">Initial analysis is completely free. Pricing for detailed reports will be determined based on your case.</p>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">Submit →</button>
                     <div class="email-contact">
-                        <p style="color: #64748b; margin-bottom: 0.75rem;" id="emailText">E-posta ile iletişim:</p>
+                        <p style="color: #64748b; margin-bottom: 0.75rem;" id="emailText">Contact via email:</p>
                         <a href="mailto:info@claimsolver.co" class="email-link">✉️ info@claimsolver.co</a>
                     </div>
                 </form>
@@ -251,74 +271,68 @@
             <div id="loadingScreen" class="hidden">
                 <div class="success-box">
                     <div class="loading-spinner"><div class="spinner"></div></div>
-                    <h2 class="success-title heading-font" id="loadingTitle">Dosyanız Analiz Ediliyor...</h2>
-                    <p class="success-text" id="loadingText">ClaimSolver AI değerlendirme yapıyor</p>
-                    <p style="margin-top: 1rem; color: #64748b; font-size: 0.875rem;" id="loadingTimer">⏱️ Bu işlem 30-60 saniye sürebilir</p>
+                    <h2 class="success-title heading-font" id="loadingTitle">Analyzing Your File...</h2>
+                    <p class="success-text" id="loadingText">ClaimSolver AI is evaluating</p>
+                    <p style="margin-top: 1rem; color: #64748b; font-size: 0.875rem;" id="loadingTimer">⏱️ This may take 30-60 seconds</p>
                 </div>
             </div>
 
             <div id="analysisResult" class="hidden">
                 <div class="success-box" style="max-width: 900px;">
                     <div class="success-icon" style="background: #dcfce7;">✓</div>
-                    <h2 class="success-title heading-font" id="analysisTitle">Analiz Tamamlandı</h2>
+                    <h2 class="success-title heading-font" id="analysisTitle">Analysis Complete</h2>
                     <div style="margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); border-radius: 1rem;">
-                        <div style="font-size: 3rem; font-weight: bold; color: #d4af37; margin-bottom: 0.5rem;" id="successRate">%--</div>
-                        <div style="color: white; font-size: 1.125rem;" id="successLabel">Başarı İhtimali</div>
+                        <div style="font-size: 3rem; font-weight: bold; color: #d4af37; margin-bottom: 0.5rem;" id="successRate">--</div>
+                        <div style="color: white; font-size: 1.125rem;" id="successLabel">Success Probability</div>
                     </div>
                     <div style="background: #eff6ff; padding: 1.5rem; border-radius: 0.75rem; border-left: 4px solid #1e3a8a; margin-bottom: 2rem; text-align: left;">
-                        <h3 style="font-size: 1.125rem; font-weight: bold; color: #0f172a; margin-bottom: 1rem;" id="summaryTitle">📝 Ön Değerlendirme</h3>
+                        <h3 style="font-size: 1.125rem; font-weight: bold; color: #0f172a; margin-bottom: 1rem;" id="summaryTitle">📝 Preliminary Assessment</h3>
                         <p style="color: #475569; line-height: 1.75; font-size: 1.0625rem;" id="summaryText">...</p>
                     </div>
-
-                    <!-- Premium Report -->
                     <div style="border: 2px solid #1e3a8a; border-radius: 1rem; padding: 2rem; margin-bottom: 1.5rem; background: white; text-align: left;">
                         <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem;">
                             <div style="font-size: 2rem;">💎</div>
                             <div style="flex: 1;">
                                 <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                                    <h3 style="font-size: 1.5rem; font-weight: bold; color: #0f172a;" id="premiumTitle">Detaylı Rapor</h3>
+                                    <h3 style="font-size: 1.5rem; font-weight: bold; color: #0f172a;" id="premiumTitle">Detailed Report</h3>
                                     <span class="early-badge" id="earlyBadge">Early Access</span>
                                 </div>
-                                <div style="margin-bottom: 1rem;" id="priceBlock">
-                                    <span class="price-original" id="priceOriginal">4,500 TL</span>
-                                    <span style="font-size: 1.875rem; font-weight: bold; color: #1e3a8a;" id="priceNew">1,990 TL</span>
-                                    <span style="font-size: 0.875rem; color: #64748b;" id="priceUsd">(~$55)</span>
+                                <div style="margin-bottom: 1rem;">
+                                    <span class="price-original" id="priceOriginal">$125</span>
+                                    <span style="font-size: 1.875rem; font-weight: bold; color: #1e3a8a;" id="priceNew">$49</span>
+                                    <span style="font-size: 0.875rem; color: #64748b;" id="priceUsd">(Early Access Price)</span>
                                 </div>
                                 <ul style="list-style: none; padding: 0; margin: 0;">
-                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium1">→ 15-20 sayfa profesyonel analiz</li>
-                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium2">→ Hukuki dayanak ve emsal kararlar</li>
-                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium3">→ Strateji önerileri ve timeline</li>
-                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium4">→ Demand letter şablonu</li>
-                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium5">→ 7 gün email destek</li>
+                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium1">→ 15-20 page professional analysis</li>
+                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium2">→ Legal basis and precedents</li>
+                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium3">→ Strategy recommendations and timeline</li>
+                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium4">→ Demand letter template</li>
+                                    <li style="padding: 0.5rem 0; color: #475569;" id="premium5">→ 7 days email support</li>
                                 </ul>
                             </div>
                         </div>
-                        <button class="submit-btn" onclick="purchasePremiumReport()" id="premiumBtn">Detaylı Rapor Al - 1,990 TL</button>
+                        <button class="submit-btn" onclick="purchasePremiumReport()" id="premiumBtn">Get Detailed Report - $49</button>
                     </div>
-
-                    <!-- Corporate -->
                     <div style="border: 2px solid #cbd5e1; border-radius: 1rem; padding: 2rem; margin-bottom: 1.5rem; background: #f8fafc; text-align: left;">
                         <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem;">
                             <div style="font-size: 2rem;">📦</div>
                             <div style="flex: 1;">
-                                <h3 style="font-size: 1.25rem; font-weight: bold; color: #0f172a; margin-bottom: 0.5rem;" id="corpTitle">Kurumsal Paket</h3>
-                                <div style="font-size: 1.5rem; font-weight: bold; color: #475569; margin-bottom: 1rem;" id="corpPrice">8,500 TL/ay <span style="font-size: 0.875rem; color: #94a3b8;" id="corpPriceUsd">(~$235/mo)</span></div>
+                                <h3 style="font-size: 1.25rem; font-weight: bold; color: #0f172a; margin-bottom: 0.5rem;" id="corpTitle">Corporate Package</h3>
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #475569; margin-bottom: 1rem;" id="corpPrice">$235/mo <span style="font-size: 0.875rem; color: #94a3b8;">(Early Access: $99/mo)</span></div>
                                 <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.875rem;">
-                                    <li style="padding: 0.375rem 0; color: #64748b;" id="corp1">→ Aylık 20 dosya analizi</li>
-                                    <li style="padding: 0.375rem 0; color: #64748b;" id="corp2">→ Sınırsız email danışmanlık</li>
-                                    <li style="padding: 0.375rem 0; color: #64748b;" id="corp3">→ Aylık 2 saat video görüşme</li>
+                                    <li style="padding: 0.375rem 0; color: #64748b;" id="corp1">→ 20 file analyses per month</li>
+                                    <li style="padding: 0.375rem 0; color: #64748b;" id="corp2">→ Unlimited email consulting</li>
+                                    <li style="padding: 0.375rem 0; color: #64748b;" id="corp3">→ 2 hours video call per month</li>
                                 </ul>
                             </div>
                         </div>
-                        <button class="submit-btn" onclick="purchaseCorporate()" style="background: #475569;" id="corpBtn">Kurumsal Paket - İletişime Geç</button>
+                        <button class="submit-btn" onclick="purchaseCorporate()" style="background: #475569;" id="corpBtn">Corporate Package - Contact Us</button>
                     </div>
-
-                    <!-- Free -->
                     <div style="text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 0.75rem;">
-                        <h4 style="font-size: 1rem; font-weight: 600; color: #0f172a; margin-bottom: 0.5rem;" id="freeTitle">✉️ Ödeme Yapmadan Devam Et</h4>
-                        <p style="color: #64748b; font-size: 0.875rem; margin-bottom: 1rem;" id="freeText">Uzman ekibimiz 24 saat içinde sizinle iletişime geçecektir.</p>
+                        <h4 style="font-size: 1rem; font-weight: 600; color: #0f172a; margin-bottom: 0.5rem;" id="freeTitle">✉️ Continue Without Payment</h4>
+                        <p style="color: #64748b; font-size: 0.875rem; margin-bottom: 1rem;" id="freeText">Our expert team will contact you within 24 hours.</p>
                         <div style="margin-bottom: 1rem;"><a href="mailto:info@claimsolver.co" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">info@claimsolver.co</a></div>
-                        <a href="#home" class="back-btn" onclick="resetForm()" id="backHomeBtn">Ana Sayfaya Dön</a>
+                        <a href="#home" class="back-btn" onclick="resetForm()" id="backHomeBtn">Back to Home</a>
                     </div>
                 </div>
             </div>
@@ -326,9 +340,9 @@
             <div id="successMessage" class="hidden">
                 <div class="success-box">
                     <div class="success-icon">✓</div>
-                    <h2 class="success-title heading-font" id="successTitle">Başvurunuz Alındı</h2>
-                    <p class="success-text" id="successText">Dosyanız incelemeye alındı. 24 saat içinde size detaylı analiz raporu göndereceğiz.</p>
-                    <a href="#home" class="back-btn" onclick="resetForm()" id="backBtn">Ana Sayfaya Dön</a>
+                    <h2 class="success-title heading-font" id="successTitle">Application Received</h2>
+                    <p class="success-text" id="successText">Your file has been received. We will send you a detailed analysis report within 24 hours.</p>
+                    <a href="#home" class="back-btn" onclick="resetForm()" id="backBtn">Back to Home</a>
                 </div>
             </div>
         </div>
@@ -342,58 +356,171 @@
                         <img src="./assets/logo-footer.png" alt="ClaimSolver" style="height: 40px;">
                         <span class="footer-title heading-font">ClaimSolver</span>
                     </div>
-                    <p class="footer-text" id="footerDesc">AI destekli sigorta hasar dosya yönetimi ve rücu danışmanlığı platformu.</p>
+                    <p class="footer-text" id="footerDesc">AI-powered insurance claim file management and subrogation consulting platform.</p>
                 </div>
                 <div>
-                    <h3 class="footer-title" id="footerServicesTitle">Hizmetler</h3>
+                    <h3 class="footer-title" id="footerServicesTitle">Services</h3>
                     <ul class="footer-links" id="footerServicesList">
-                        <li>Hasar Dosyası Yönetimi</li>
-                        <li>Rücu Takibi</li>
-                        <li>CMR/FFL Analizi</li>
-                        <li>Poliçe/Teminat Analizi</li>
+                        <li>Claim File Management</li>
+                        <li>Subrogation Tracking</li>
+                        <li>CMR/FFL Analysis</li>
+                        <li>Policy/Coverage Analysis</li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="footer-title" id="footerContactTitle">İletişim</h3>
+                    <h3 class="footer-title" id="footerContactTitle">Contact</h3>
                     <a href="mailto:info@claimsolver.co" class="footer-link">✉️ info@claimsolver.co</a>
                     <div style="margin-top: 1.5rem;">
-                        <h3 class="footer-title" id="footerLegalTitle">Yasal</h3>
-                        <a href="#" class="footer-link" onclick="openKVKK(event)" id="footerKvkkLink">KVKK</a>
+                        <h3 class="footer-title" id="footerLegalTitle">Legal</h3>
+                        <ul class="footer-links">
+                            <li><button class="footer-link" onclick="openModal('privacy', event)" id="footerPrivacy">Privacy Policy</button></li>
+                            <li><button class="footer-link" onclick="openModal('terms', event)" id="footerTerms">Terms of Service</button></li>
+                            <li><button class="footer-link" onclick="openModal('refund', event)" id="footerRefund">Refund Policy</button></li>
+                            <li><button class="footer-link" onclick="openModal('cookie', event)" id="footerCookie">Cookie Policy</button></li>
+                        </ul>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p id="footerCopyright">© 2026 ClaimSolver. Tüm hakları saklıdır.</p>
+                <p id="footerCopyright">© 2026 ClaimSolver. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Legal Modals -->
+    <div id="legalModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="legalModalTitle">Privacy Policy</h2>
+                <button class="modal-close" onclick="closeLegalModal()">✕</button>
+            </div>
+            <div class="modal-tabs">
+                <button class="modal-tab active" onclick="switchLang('en', this)">English</button>
+                <button class="modal-tab" onclick="switchLang('tr', this)">Türkçe</button>
+            </div>
+            <div id="modalBodyEn" class="modal-body active"></div>
+            <div id="modalBodyTr" class="modal-body"></div>
+            <button class="submit-btn" onclick="closeLegalModal()" style="margin-top: 1.5rem;" id="legalCloseBtn">Close</button>
+        </div>
+    </div>
+
+    <!-- KVKK Modal (kept for backward compat) -->
     <div id="kvkkModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="kvkkModalTitle">KVKK Aydınlatma Metni</h2>
+                <h2 class="modal-title" id="kvkkModalTitle">Privacy Policy</h2>
                 <button class="modal-close" onclick="closeKVKK()">✕</button>
             </div>
             <div id="kvkkContent"></div>
-            <button class="submit-btn" onclick="closeKVKK()" id="kvkkCloseBtn">Kapat</button>
+            <button class="submit-btn" onclick="closeKVKK()" id="kvkkCloseBtn">Close</button>
         </div>
     </div>
 
     <script>
-        let currentLang = 'tr';
+        let currentLang = 'en';
+
+        const legalContent = {
+            privacy: {
+                title: 'Privacy Policy',
+                en: `
+                    <div class="modal-section"><p style="color:#475569;margin-bottom:1rem;font-size:0.875rem;">Last updated: April 2026</p></div>
+                    <div class="modal-section"><h3>1. Data Collected</h3><p>Name, email, phone, company information, claim description and uploaded documents.</p></div>
+                    <div class="modal-section"><h3>2. Use of Data</h3><p>Service delivery, report preparation, and communication.</p></div>
+                    <div class="modal-section"><h3>3. Data Security</h3><p>Your data is stored encrypted on secure servers and not shared with third parties.</p></div>
+                    <div class="modal-section"><h3>4. Data Retention</h3><p>Uploaded documents deleted 30 days after file closure. Contact information retained as required by law.</p></div>
+                    <div class="modal-section"><h3>5. Your Rights</h3><p>You have the right to access, correct and delete your data. Contact info@claimsolver.co.</p></div>
+                    <div class="modal-section"><h3>6. Cookies</h3><p>Site collects anonymous visitor data via Google Analytics.</p></div>
+                `,
+                tr: `
+                    <div class="modal-section"><p style="color:#475569;margin-bottom:1rem;font-size:0.875rem;">Son güncelleme: Nisan 2026</p></div>
+                    <div class="modal-section"><h3>1. Toplanan Veriler</h3><p>Ad-soyad, email, telefon, şirket bilgisi, hasar dosyası açıklaması ve yüklenen belgeler.</p></div>
+                    <div class="modal-section"><h3>2. Verilerin Kullanımı</h3><p>Hizmet sunumu, analiz raporu hazırlama ve iletişim.</p></div>
+                    <div class="modal-section"><h3>3. Veri Güvenliği</h3><p>Verileriniz güvenli sunucularda şifreli olarak saklanır. Üçüncü taraflarla paylaşılmaz.</p></div>
+                    <div class="modal-section"><h3>4. Veri Saklama</h3><p>Dosya kapatıldıktan 30 gün sonra yüklenen belgeler silinir. İletişim bilgileri yasal yükümlülükler kapsamında saklanır.</p></div>
+                    <div class="modal-section"><h3>5. Haklarınız</h3><p>KVKK md.11 kapsamında verilerinize erişim, düzeltme ve silme hakkınız vardır. info@claimsolver.co adresine yazabilirsiniz.</p></div>
+                    <div class="modal-section"><h3>6. Çerezler</h3><p>Site, Google Analytics aracılığıyla anonim ziyaretçi verisi toplar.</p></div>
+                `
+            },
+            terms: {
+                title: 'Terms of Service',
+                en: `
+                    <div class="modal-section"><p style="color:#475569;margin-bottom:1rem;font-size:0.875rem;">Last updated: April 2026</p></div>
+                    <div class="modal-section"><h3>1. Service Description</h3><p>ClaimSolver is a digital platform providing AI-powered technical analysis reports for insurance claim files. Reports are technical in nature and do not constitute legal advice.</p></div>
+                    <div class="modal-section"><h3>2. Scope of Services</h3><p>Premium Report: Technical analysis, strategy recommendations and demand letter template. Corporate Package: Monthly file analysis and consulting. All reports delivered within 24 hours.</p></div>
+                    <div class="modal-section"><h3>3. Payment and Pricing</h3><p>Payments processed through secure payment infrastructure. Service begins upon payment confirmation.</p></div>
+                    <div class="modal-section"><h3>4. Limitation of Liability</h3><p>ClaimSolver reports are technical analyses only. ClaimSolver cannot be held responsible for outcomes of legal proceedings.</p></div>
+                    <div class="modal-section"><h3>5. Privacy</h3><p>Uploaded documents and personal data are protected under applicable data protection laws and not shared with third parties.</p></div>
+                    <div class="modal-section"><h3>6. Contact</h3><p>info@claimsolver.co</p></div>
+                `,
+                tr: `
+                    <div class="modal-section"><p style="color:#475569;margin-bottom:1rem;font-size:0.875rem;">Son güncelleme: Nisan 2026</p></div>
+                    <div class="modal-section"><h3>1. Hizmet Tanımı</h3><p>ClaimSolver, sigorta hasar dosyaları için yapay zeka destekli teknik analiz raporları sunan dijital bir platformdur. Sunulan raporlar teknik danışmanlık niteliğinde olup hukuki tavsiye niteliği taşımaz.</p></div>
+                    <div class="modal-section"><h3>2. Hizmet Kapsamı</h3><p>Premium Rapor: Dosyanızın teknik analizi, strateji önerileri ve talep mektubu şablonu. Kurumsal Paket: Aylık dosya analizi ve danışmanlık hizmeti. Tüm raporlar 24 saat içinde teslim edilir.</p></div>
+                    <div class="modal-section"><h3>3. Ödeme ve Fiyatlandırma</h3><p>Ödemeler güvenli ödeme altyapısı üzerinden alınır. Ödeme onayı sonrası hizmet başlar.</p></div>
+                    <div class="modal-section"><h3>4. Sorumluluk Sınırı</h3><p>ClaimSolver'ın sunduğu raporlar teknik analiz niteliğindedir. Hukuki süreçlerin sonucundan ClaimSolver sorumlu tutulamaz.</p></div>
+                    <div class="modal-section"><h3>5. Gizlilik</h3><p>Yüklenen belgeler ve kişisel veriler KVKK kapsamında korunur. Üçüncü taraflarla paylaşılmaz.</p></div>
+                    <div class="modal-section"><h3>6. İletişim</h3><p>info@claimsolver.co</p></div>
+                `
+            },
+            refund: {
+                title: 'Refund Policy',
+                en: `
+                    <div class="modal-section"><p style="color:#475569;margin-bottom:1rem;font-size:0.875rem;">Last updated: April 2026</p></div>
+                    <div class="modal-section"><h3>Premium Report</h3><p>Digital reports provided by ClaimSolver constitute "instantly performed digital content." Per consumer protection laws, the right of withdrawal cannot be exercised once the analysis begins. No refunds are provided unless a technical failure prevents service delivery.</p></div>
+                    <div class="modal-section"><h3>Corporate Package</h3><p>Monthly subscription can be cancelled from the next billing period. No refunds for current period.</p></div>
+                    <div class="modal-section"><h3>Contact</h3><p>info@claimsolver.co</p></div>
+                `,
+                tr: `
+                    <div class="modal-section"><p style="color:#475569;margin-bottom:1rem;font-size:0.875rem;">Son güncelleme: Nisan 2026</p></div>
+                    <div class="modal-section"><h3>Premium Rapor</h3><p>ClaimSolver tarafından sunulan dijital raporlar, "anında ifa edilen dijital içerik" kapsamındadır. Tüketici hakları mevzuatı gereği, analiz süreci başlayıp rapor hazırlandığı andan itibaren cayma hakkı kullanılamaz. Teknik bir hata dışında iade yapılmamaktadır.</p></div>
+                    <div class="modal-section"><h3>Kurumsal Paket</h3><p>Aylık abonelik bir sonraki fatura döneminden itibaren iptal edilebilir. Mevcut dönem için iade yapılmaz.</p></div>
+                    <div class="modal-section"><h3>İletişim</h3><p>info@claimsolver.co</p></div>
+                `
+            },
+            cookie: {
+                title: 'Cookie Policy',
+                en: `
+                    <div class="modal-section"><p style="color:#475569;margin-bottom:1rem;font-size:0.875rem;">Last updated: April 2026</p></div>
+                    <div class="modal-section"><h3>Use of Cookies</h3><p>Our website uses cookies to improve user experience. By using our site, you consent to our use of cookies.</p></div>
+                    <div class="modal-section"><h3>Analytics</h3><p>We use Google Analytics to collect anonymous visitor data such as pages visited, time spent, and geographic location. No personally identifiable information is collected.</p></div>
+                    <div class="modal-section"><h3>Contact</h3><p>info@claimsolver.co</p></div>
+                `,
+                tr: `
+                    <div class="modal-section"><p style="color:#475569;margin-bottom:1rem;font-size:0.875rem;">Son güncelleme: Nisan 2026</p></div>
+                    <div class="modal-section"><h3>Çerez Kullanımı</h3><p>Sitemiz, kullanıcı deneyimini iyileştirmek için çerezler kullanır. Sitede kalarak çerez kullanımını kabul etmiş sayılırsınız.</p></div>
+                    <div class="modal-section"><h3>Analitik</h3><p>Ziyaret edilen sayfalar, geçirilen süre ve coğrafi konum gibi anonim ziyaretçi verilerini toplamak için Google Analytics kullanıyoruz. Kişisel tanımlayıcı bilgi toplanmaz.</p></div>
+                    <div class="modal-section"><h3>İletişim</h3><p>info@claimsolver.co</p></div>
+                `
+            }
+        };
+
+        let currentModal = 'privacy';
+        let currentModalLang = 'en';
+
+        function openModal(type, e) {
+            if (e) e.preventDefault();
+            currentModal = type;
+            const content = legalContent[type];
+            document.getElementById('legalModalTitle').textContent = content.title;
+            document.getElementById('modalBodyEn').innerHTML = content.en;
+            document.getElementById('modalBodyTr').innerHTML = content.tr;
+            document.getElementById('legalModal').classList.add('active');
+            switchLang(currentLang === 'tr' ? 'tr' : 'en', document.querySelector('.modal-tab'));
+        }
+
+        function closeLegalModal() {
+            document.getElementById('legalModal').classList.remove('active');
+        }
+
+        function switchLang(lang, btn) {
+            currentModalLang = lang;
+            document.querySelectorAll('.modal-tab').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            document.getElementById('modalBodyEn').classList.toggle('active', lang === 'en');
+            document.getElementById('modalBodyTr').classList.toggle('active', lang === 'tr');
+        }
 
         const content = {
-            tr: {
-                services: [
-                    { title: 'Hasar Dosyası Yönetimi', desc: 'Trafik ve oto dışı tüm branşlardaki sigorta hasar dosyalarını teknik detaylarıyla birlikte ele alır; evrak takibinden sonuçlandırmaya kadar tüm süreci sistematik biçimde yönetir.', ai: 'AI ile otomatik evrak analizi ve eksik belge tespiti' },
-                    { title: 'Rücu Takibi ve Danışmanlığı', desc: 'Tahsil edilemeyen, bekleyen veya karmaşık hale gelmiş rücu dosyalarında iletişim süreçlerinden yasal yazışmalara kadar tüm adımları takip eder, sonuca ulaşana kadar sürecin arkasında durur.', ai: 'AI destekli başarı oranı tahmini ve stratejik yol haritası' },
-                    { title: 'Değer Kaybı ve Hasar Farkı', desc: 'Sigortalı taraflı trafik kazalarında oluşan değer kaybı veya onarım sonrası fark taleplerine ilişkin tüm evrak, hesaplama, iletişim ve tahsilat süreci yürütülür.', ai: 'AI ile değer kaybı hesaplama ve emsal vaka analizi' },
-                    { title: 'Kusur Oranı ve Değişimi', desc: 'Eksper raporları ya da kusur oranları sigortalı aleyhine geliştiğinde, ilgili yazışmaları ve gerekçeli talepleri düzenleyerek dosya itiraz sürecini yönetir.', ai: 'AI tabanlı kusur analizi ve karşılaştırmalı değerlendirme' },
-                    { title: 'CMR ve FFL Uluslararası Dosyalar', desc: 'Uluslararası taşıma kaynaklı zararlarda, CMR Konvansiyonu ve Freight Forwarder Liability teminatlı dosyalara yönelik çözüm ve rücu danışmanlığı sunar.', ai: 'AI ile CMR madde analizi ve hukuki dayanak tespiti' },
-                    { title: 'Poliçe ve Teminat Analizi', desc: 'Poliçenizi yaptırmadan önce veya sonrasında, ilgili durumun teminat kapsamında olup olmadığını analiz eder; teminat dışı kalma risklerini ve başvuru yollarını açıkça ortaya koyar.', ai: 'AI ile poliçe teminat analizi ve kapsam değerlendirmesi' }
-                ],
-                serviceOptions: ['Seçiniz...', 'Ret Dosyası Danışmanlığı', 'CMR/FFL Analizi', 'Emtia Hasarı', 'Yangın & Sorumluluk', 'Değer Kaybı', 'Hasar Farkı', 'Kusur Değişimi', 'Yatar Bedeli', 'Uluslararası Rücu', 'Poliçe/Teminat Analizi', 'Diğer']
-            },
             en: {
                 services: [
                     { title: 'Claim File Management', desc: 'Handles insurance claim files in all traffic and non-auto branches with technical details; systematically manages the entire process from document tracking to finalization.', ai: 'AI-powered automatic document analysis and missing document detection' },
@@ -404,6 +531,17 @@
                     { title: 'Policy & Coverage Analysis', desc: 'Before or after taking out your policy, analyzes whether the relevant situation is covered; clearly identifies coverage exclusion risks and application paths.', ai: 'AI-powered policy coverage analysis and scope evaluation' }
                 ],
                 serviceOptions: ['Select...', 'Rejected Claim Consulting', 'CMR/FFL Analysis', 'Cargo Damage', 'Fire & Liability', 'Diminished Value', 'Claim Difference', 'Fault Modification', 'Loss of Use', 'International Subrogation', 'Policy/Coverage Analysis', 'Other']
+            },
+            tr: {
+                services: [
+                    { title: 'Hasar Dosyası Yönetimi', desc: 'Trafik ve oto dışı tüm branşlardaki sigorta hasar dosyalarını teknik detaylarıyla birlikte ele alır; evrak takibinden sonuçlandırmaya kadar tüm süreci sistematik biçimde yönetir.', ai: 'AI ile otomatik evrak analizi ve eksik belge tespiti' },
+                    { title: 'Rücu Takibi ve Danışmanlığı', desc: 'Tahsil edilemeyen, bekleyen veya karmaşık hale gelmiş rücu dosyalarında iletişim süreçlerinden yasal yazışmalara kadar tüm adımları takip eder, sonuca ulaşana kadar sürecin arkasında durur.', ai: 'AI destekli başarı oranı tahmini ve stratejik yol haritası' },
+                    { title: 'Değer Kaybı ve Hasar Farkı', desc: 'Sigortalı taraflı trafik kazalarında oluşan değer kaybı veya onarım sonrası fark taleplerine ilişkin tüm evrak, hesaplama, iletişim ve tahsilat süreci yürütülür.', ai: 'AI ile değer kaybı hesaplama ve emsal vaka analizi' },
+                    { title: 'Kusur Oranı ve Değişimi', desc: 'Eksper raporları ya da kusur oranları sigortalı aleyhine geliştiğinde, ilgili yazışmaları ve gerekçeli talepleri düzenleyerek dosya itiraz sürecini yönetir.', ai: 'AI tabanlı kusur analizi ve karşılaştırmalı değerlendirme' },
+                    { title: 'CMR ve FFL Uluslararası Dosyalar', desc: 'Uluslararası taşıma kaynaklı zararlarda, CMR Konvansiyonu ve Freight Forwarder Liability teminatlı dosyalara yönelik çözüm ve rücu danışmanlığı sunar.', ai: 'AI ile CMR madde analizi ve hukuki dayanak tespiti' },
+                    { title: 'Poliçe ve Teminat Analizi', desc: 'Poliçenizi yaptırmadan önce veya sonrasında, ilgili durumun teminat kapsamında olup olmadığını analiz eder; teminat dışı kalma risklerini ve başvuru yollarını açıkça ortaya koyar.', ai: 'AI ile poliçe teminat analizi ve kapsam değerlendirmesi' }
+                ],
+                serviceOptions: ['Seçiniz...', 'Ret Dosyası Danışmanlığı', 'CMR/FFL Analizi', 'Emtia Hasarı', 'Yangın & Sorumluluk', 'Değer Kaybı', 'Hasar Farkı', 'Kusur Değişimi', 'Yatar Bedeli', 'Uluslararası Rücu', 'Poliçe/Teminat Analizi', 'Diğer']
             }
         };
 
@@ -421,70 +559,78 @@
         }
 
         function toggleLanguage() {
-            currentLang = currentLang === 'tr' ? 'en' : 'tr';
+            currentLang = currentLang === 'en' ? 'tr' : 'en';
             updateContent();
         }
 
         function updateContent() {
             const en = currentLang === 'en';
-            const t = (trText, enText) => en ? enText : trText;
+            const t = (enText, trText) => en ? enText : trText;
 
-            document.getElementById('tagline').textContent = t('Sigorta Hasar Dosya Çözümleri & Rücu Yönetim Danışmanlığı', 'Insurance Claim Solutions & Subrogation Management Consulting');
-            document.getElementById('slogan1').textContent = t('Her dosyanın bir çözümü vardır.', 'Every claim has a solution.');
-            document.getElementById('slogan2').textContent = t('Çözüm biziz.', 'We are the solution.');
-            document.getElementById('heroCta').textContent = t('Ücretsiz Analiz Başlat →', 'Start Free Analysis →');
-            document.getElementById('stat1').textContent = t('1000+ Dosya', '1000+ Cases');
-            document.getElementById('stat2').textContent = t('%85 Başarı', '85% Success');
-            document.getElementById('stat3').textContent = t('24 Saat Yanıt', '24h Response');
-            document.getElementById('navHome').textContent = t('Ana Sayfa', 'Home');
-            document.getElementById('navAbout').textContent = t('Hakkımızda', 'About');
-            document.getElementById('navServices').textContent = t('Hizmetlerimiz', 'Services');
-            document.getElementById('navContact').textContent = t('İletişim', 'Contact');
-            document.getElementById('aboutTitle').textContent = t('Hakkımızda', 'About Us');
-            document.getElementById('aboutIntro').textContent = t('ClaimSolver, sigorta sektörüne özel hasar dosyası yönetimi ve rücu danışmanlığı hizmetleri sunan bağımsız bir platformdur.', 'ClaimSolver is an independent platform providing specialized claim file management and subrogation consulting services for the insurance sector.');
-            document.getElementById('aboutP1').textContent = t('Oto ve oto dışı tüm branşlardaki hasar dosyalarında, özellikle tahsil edilemeyen veya çözümsüz görülen durumlarda devreye girer; süreci sonuca ulaştırana kadar takibi bırakmaz.', 'We intervene in all branches of auto and non-auto claim files, especially in cases deemed uncollectible or unsolvable; we never abandon the process until it reaches resolution.');
-            document.getElementById('aboutP2').textContent = t('Değer kaybı, hasar farkı, kusur değişimi talepleri gibi trafik kaynaklı dosyaların yanı sıra, CMR ve FFL teminatlı uluslararası taşımacılık kaynaklı karmaşık rücu süreçlerinde de etkin çözümler sunar.', 'In addition to traffic-related files such as diminished value, claim differences, and fault modification requests, we provide effective solutions in complex subrogation processes involving CMR and FFL covered international transportation.');
-            document.getElementById('aboutP3').textContent = t('SEGEM sertifikalı ve sektörel deneyime sahip uzman kadrosuyla, sigortalıdan eksperine, eksperden tahsilata kadar olan tüm süreci bütüncül bir yaklaşımla ele alır.', 'Specialists with 10+ years in international insurance claims, CMR/FFL subrogation, and cross-border recovery — managing every step from first notice to final collection.');
-            document.getElementById('aboutP4').textContent = t('Rücu dosyalarındaki iletişim, belge inceleme ve ısrarlı takip sayesinde kayıp gibi görünen bedellerin tahsilatını mümkün kılar, yalnızca hasarı değil, sürecin tamamını yönetir.', 'Through communication, document review, and persistent follow-up in subrogation files, we make it possible to collect amounts that appear lost, managing not only the damage but the entire process.');
-            document.getElementById('aiTitle').textContent = t('Yapay Zeka Destekli Analiz', 'AI-Powered Analysis');
-            document.getElementById('aiText').textContent = t('Yapay zeka destekli analiz motoru ile dosya değerlendirmesi 5 dakikadan kısa sürede tamamlanır; uzman ekip 24 saat içinde detaylı rapor sunar.', 'Our AI-powered analysis engine completes file evaluation in less than 5 minutes; expert team delivers detailed reports within 24 hours.');
-            document.getElementById('servicesTitle').textContent = t('Hizmetlerimiz', 'Our Services');
-            document.getElementById('servicesSubtitle').textContent = t('Her dosya türü için profesyonel çözüm', 'Professional solutions for every case type');
-            document.getElementById('contactTitle').textContent = t('Ücretsiz Analiz Başvurusu', 'Free Analysis Application');
-            document.getElementById('contactSubtitle').textContent = t('24 saat içinde size geri dönüş yapacağız', 'We will respond within 24 hours');
-            document.getElementById('nameLabel').textContent = t('Ad Soyad *', 'Full Name *');
-            document.getElementById('companyLabel').textContent = t('Şirket', 'Company');
-            document.getElementById('emailLabel').textContent = t('E-posta *', 'Email *');
-            document.getElementById('phoneLabel').textContent = t('Telefon', 'Phone');
-            document.getElementById('serviceLabel').textContent = t('Hizmet Türü *', 'Service Type *');
-            document.getElementById('descLabel').textContent = t('Dosyanızı Kısaca Açıklayın *', 'Briefly Describe Your Case *');
-            document.getElementById('fileLabel').textContent = t('Belge Ekleyin (PDF, JPG, PNG, Word — maks 10MB)', 'Upload Document (PDF, JPG, PNG, Word — max 10MB)');
-            document.getElementById('fileUploadLabel').textContent = t('📄 Dosya Seç', '📄 Choose File');
-            document.getElementById('kvkkLabel').innerHTML = en ? 'I have read and accept the Privacy Policy — <a href="#" class="kvkk-link" onclick="openKVKK(event)">Privacy Policy</a>' : 'KVKK Aydınlatma Metni\'ni okudum, onaylıyorum — <a href="#" class="kvkk-link" onclick="openKVKK(event)">KVKK Metni</a>';
-            document.getElementById('contactNote').textContent = t('İlk analiz tamamen ücretsizdir. Detaylı raporlar için fiyatlandırma dosyanızın durumuna göre belirlenir.', 'Initial analysis is completely free. Pricing for detailed reports will be determined based on your case.');
-            document.getElementById('submitBtn').textContent = t('Gönder →', 'Submit →');
-            document.getElementById('emailText').textContent = t('E-posta ile iletişim:', 'Contact via email:');
-            document.getElementById('footerDesc').textContent = t('AI destekli sigorta hasar dosya yönetimi ve rücu danışmanlığı platformu.', 'AI-powered insurance claim file management and subrogation consulting platform.');
-            document.getElementById('footerServicesTitle').textContent = t('Hizmetler', 'Services');
+            document.getElementById('tagline').textContent = t('Insurance Claim Solutions & Subrogation Management Consulting', 'Sigorta Hasar Dosya Çözümleri & Rücu Yönetim Danışmanlığı');
+            document.getElementById('slogan1').textContent = t('Every claim has a solution.', 'Her dosyanın bir çözümü vardır.');
+            document.getElementById('slogan2').textContent = t('We are the solution.', 'Çözüm biziz.');
+            document.getElementById('heroCta').textContent = t('Start Free Analysis →', 'Ücretsiz Analiz Başlat →');
+            document.getElementById('stat1').textContent = t('1000+ Cases', '1000+ Dosya');
+            document.getElementById('stat2').textContent = t('85% Success', '%85 Başarı');
+            document.getElementById('stat3').textContent = t('24h Response', '24 Saat Yanıt');
+            document.getElementById('navHome').textContent = t('Home', 'Ana Sayfa');
+            document.getElementById('navAbout').textContent = t('About', 'Hakkımızda');
+            document.getElementById('navServices').textContent = t('Services', 'Hizmetlerimiz');
+            document.getElementById('navContact').textContent = t('Contact', 'İletişim');
+            document.getElementById('aboutTitle').textContent = t('About Us', 'Hakkımızda');
+            document.getElementById('aboutIntro').textContent = t('ClaimSolver is an independent platform providing specialized claim file management and subrogation consulting services for the insurance sector.', 'ClaimSolver, sigorta sektörüne özel hasar dosyası yönetimi ve rücu danışmanlığı hizmetleri sunan bağımsız bir platformdur.');
+            document.getElementById('aboutP1').textContent = t('We intervene in all branches of auto and non-auto claim files, especially in cases deemed uncollectible or unsolvable; we never abandon the process until it reaches resolution.', 'Oto ve oto dışı tüm branşlardaki hasar dosyalarında, özellikle tahsil edilemeyen veya çözümsüz görülen durumlarda devreye girer; süreci sonuca ulaştırana kadar takibi bırakmaz.');
+            document.getElementById('aboutP2').textContent = t('In addition to traffic-related files such as diminished value, claim differences, and fault modification requests, we provide effective solutions in complex subrogation processes involving CMR and FFL covered international transportation.', 'Değer kaybı, hasar farkı, kusur değişimi talepleri gibi trafik kaynaklı dosyaların yanı sıra, CMR ve FFL teminatlı uluslararası taşımacılık kaynaklı karmaşık rücu süreçlerinde de etkin çözümler sunar.');
+            document.getElementById('aboutP3').textContent = t('Specialists with 10+ years in international insurance claims, CMR/FFL subrogation, and cross-border recovery — managing every step from first notice to final collection.', 'SEGEM sertifikalı ve sektörel deneyime sahip uzman kadrosuyla, sigortalıdan eksperine, eksperden tahsilata kadar olan tüm süreci bütüncül bir yaklaşımla ele alır.');
+            document.getElementById('aboutP4').textContent = t('Through communication, document review, and persistent follow-up in subrogation files, we make it possible to collect amounts that appear lost, managing not only the damage but the entire process.', 'Rücu dosyalarındaki iletişim, belge inceleme ve ısrarlı takip sayesinde kayıp gibi görünen bedellerin tahsilatını mümkün kılar, yalnızca hasarı değil, sürecin tamamını yönetir.');
+            document.getElementById('aiTitle').textContent = t('AI-Powered Analysis', 'Yapay Zeka Destekli Analiz');
+            document.getElementById('aiText').textContent = t('Our AI-powered analysis engine completes file evaluation in less than 5 minutes; expert team delivers detailed reports within 24 hours.', 'Yapay zeka destekli analiz motoru ile dosya değerlendirmesi 5 dakikadan kısa sürede tamamlanır; uzman ekip 24 saat içinde detaylı rapor sunar.');
+            document.getElementById('servicesTitle').textContent = t('Our Services', 'Hizmetlerimiz');
+            document.getElementById('servicesSubtitle').textContent = t('Professional solutions for every case type', 'Her dosya türü için profesyonel çözüm');
+            document.getElementById('contactTitle').textContent = t('Free Analysis Application', 'Ücretsiz Analiz Başvurusu');
+            document.getElementById('contactSubtitle').textContent = t('We will respond within 24 hours', '24 saat içinde size geri dönüş yapacağız');
+            document.getElementById('nameLabel').textContent = t('Full Name *', 'Ad Soyad *');
+            document.getElementById('companyLabel').textContent = t('Company', 'Şirket');
+            document.getElementById('emailLabel').textContent = t('Email *', 'E-posta *');
+            document.getElementById('phoneLabel').textContent = t('Phone', 'Telefon');
+            document.getElementById('serviceLabel').textContent = t('Service Type *', 'Hizmet Türü *');
+            document.getElementById('descLabel').textContent = t('Briefly Describe Your Case *', 'Dosyanızı Kısaca Açıklayın *');
+            document.getElementById('fileLabel').textContent = t('Upload Document (PDF, JPG, PNG, Word — max 10MB)', 'Belge Ekleyin (PDF, JPG, PNG, Word — maks 10MB)');
+            document.getElementById('fileUploadLabel').textContent = t('📄 Choose File', '📄 Dosya Seç');
+            document.getElementById('contactNote').textContent = t('Initial analysis is completely free. Pricing for detailed reports will be determined based on your case.', 'İlk analiz tamamen ücretsizdir. Detaylı raporlar için fiyatlandırma dosyanızın durumuna göre belirlenir.');
+            document.getElementById('submitBtn').textContent = t('Submit →', 'Gönder →');
+            document.getElementById('emailText').textContent = t('Contact via email:', 'E-posta ile iletişim:');
+            document.getElementById('footerDesc').textContent = t('AI-powered insurance claim file management and subrogation consulting platform.', 'AI destekli sigorta hasar dosya yönetimi ve rücu danışmanlığı platformu.');
+            document.getElementById('footerServicesTitle').textContent = t('Services', 'Hizmetler');
             document.getElementById('footerServicesList').innerHTML = en
                 ? '<li>Claim File Management</li><li>Subrogation Tracking</li><li>CMR/FFL Analysis</li><li>Policy/Coverage Analysis</li>'
                 : '<li>Hasar Dosyası Yönetimi</li><li>Rücu Takibi</li><li>CMR/FFL Analizi</li><li>Poliçe/Teminat Analizi</li>';
-            document.getElementById('footerContactTitle').textContent = t('İletişim', 'Contact');
-            document.getElementById('footerLegalTitle').textContent = t('Yasal', 'Legal');
-            document.getElementById('footerKvkkLink').textContent = t('KVKK', 'Privacy Policy');
-            document.getElementById('footerCopyright').textContent = t('© 2026 ClaimSolver. Tüm hakları saklıdır.', '© 2026 ClaimSolver. All rights reserved.');
-            document.getElementById('namePlaceholder').placeholder = en ? 'Your Full Name' : 'Adınız Soyadınız';
-document.getElementById('companyPlaceholder').placeholder = en ? 'Company name (optional)' : 'Şirket adı (opsiyonel)';
-document.getElementById('emailPlaceholder').placeholder = en ? 'example@email.com' : 'ornek@email.com';
-document.getElementById('phonePlaceholder').placeholder = en ? '+1 555 000 0000' : '+90 555 000 00 00';
-document.getElementById('descTextarea').placeholder = en ? 'Briefly describe your case...' : 'Dosyanızı kısaca açıklayın...';
+            document.getElementById('footerContactTitle').textContent = t('Contact', 'İletişim');
+            document.getElementById('footerLegalTitle').textContent = t('Legal', 'Yasal');
+            document.getElementById('footerPrivacy').textContent = t('Privacy Policy', 'Gizlilik Politikası');
+            document.getElementById('footerTerms').textContent = t('Terms of Service', 'Kullanım Koşulları');
+            document.getElementById('footerRefund').textContent = t('Refund Policy', 'İade Politikası');
+            document.getElementById('footerCookie').textContent = t('Cookie Policy', 'Çerez Politikası');
+            document.getElementById('footerCopyright').textContent = t('© 2026 ClaimSolver. All rights reserved.', '© 2026 ClaimSolver. Tüm hakları saklıdır.');
 
-            // Fiyatlar
+            // Checkboxes
+            document.getElementById('check1Label').innerHTML = en
+                ? 'I agree to the processing of my personal data in accordance with the <a href="#" onclick="openModal(\'privacy\', event)">Privacy Policy</a>. *'
+                : 'Kişisel verilerimin <a href="#" onclick="openModal(\'privacy\', event)">Gizlilik Politikası</a> çerçevesinde işlenmesini kabul ediyorum. *';
+            document.getElementById('check2Label').innerHTML = en
+                ? 'I have read the <a href="#" onclick="openModal(\'terms\', event)">Terms of Service</a>. I acknowledge that digital reports are instantly performed services and are exempt from the right of withdrawal. *'
+                : '<a href="#" onclick="openModal(\'terms\', event)">Kullanım Koşulları</a>\'nı okudum. Dijital raporların anında ifa edilen hizmetler olması nedeniyle cayma hakkı istisnası kapsamında olduğunu kabul ediyorum. *';
+            document.getElementById('check3Label').textContent = en
+                ? 'I agree to receive commercial communications about updates and sector analyses. (Optional)'
+                : 'Güncellemeler ve sektörel analizler hakkında ticari ileti almayı kabul ediyorum. (Opsiyonel)';
+
+            // Prices
             if (en) {
                 document.getElementById('priceOriginal').textContent = '$125';
                 document.getElementById('priceNew').textContent = '$49';
                 document.getElementById('priceUsd').textContent = '(Early Access Price)';
-                document.getElementById('corpPrice').innerHTML = '$235/mo <span style="font-size:0.875rem;color:#94a3b8;" id="corpPriceUsd">(Early Access: $99/mo)</span>';
+                document.getElementById('corpPrice').innerHTML = '$235/mo <span style="font-size:0.875rem;color:#94a3b8;">(Early Access: $99/mo)</span>';
                 document.getElementById('premiumBtn').textContent = 'Get Detailed Report - $49';
                 document.getElementById('premiumTitle').textContent = 'Detailed Report';
                 document.getElementById('premium1').textContent = '→ 15-20 page professional analysis';
@@ -501,6 +647,12 @@ document.getElementById('descTextarea').placeholder = en ? 'Briefly describe you
                 document.getElementById('freeText').textContent = 'Our expert team will contact you within 24 hours.';
                 document.getElementById('backHomeBtn').textContent = 'Back to Home';
                 document.getElementById('earlyBadge').textContent = 'Early Access';
+                document.getElementById('analysisTitle').textContent = 'Analysis Complete';
+                document.getElementById('successLabel').textContent = 'Success Probability';
+                document.getElementById('summaryTitle').textContent = '📝 Preliminary Assessment';
+                document.getElementById('loadingTitle').textContent = 'Analyzing Your File...';
+                document.getElementById('loadingText').textContent = 'ClaimSolver AI is evaluating';
+                document.getElementById('loadingTimer').textContent = '⏱️ This may take 30-60 seconds';
             } else {
                 document.getElementById('priceOriginal').textContent = '4,500 TL';
                 document.getElementById('priceNew').textContent = '1,990 TL';
@@ -522,6 +674,12 @@ document.getElementById('descTextarea').placeholder = en ? 'Briefly describe you
                 document.getElementById('freeText').textContent = 'Uzman ekibimiz 24 saat içinde sizinle iletişime geçecektir.';
                 document.getElementById('backHomeBtn').textContent = 'Ana Sayfaya Dön';
                 document.getElementById('earlyBadge').textContent = 'Early Access';
+                document.getElementById('analysisTitle').textContent = 'Analiz Tamamlandı';
+                document.getElementById('successLabel').textContent = 'Başarı İhtimali';
+                document.getElementById('summaryTitle').textContent = '📝 Ön Değerlendirme';
+                document.getElementById('loadingTitle').textContent = 'Dosyanız Analiz Ediliyor...';
+                document.getElementById('loadingText').textContent = 'ClaimSolver AI değerlendirme yapıyor';
+                document.getElementById('loadingTimer').textContent = '⏱️ Bu işlem 30-60 saniye sürebilir';
             }
 
             document.querySelector('.lang-btn').innerHTML = en
@@ -531,24 +689,21 @@ document.getElementById('descTextarea').placeholder = en ? 'Briefly describe you
             renderServices();
             renderServiceOptions();
         }
-        
+
         async function handleSubmit(e) {
             e.preventDefault();
-            // Sorgu limiti kontrolü
-const queryCount = parseInt(localStorage.getItem('cs_query_count') || '0');
-if (queryCount >= 1) {
-    alert(currentLang === 'tr' 
-        ? 'Ücretsiz analiz hakkınızı kullandınız. Detaylı rapor için info@claimsolver.co adresine yazın veya Premium Rapor satın alın.'
-        : 'You have used your free analysis. Email info@claimsolver.co or purchase a Premium Report.');
-    return;
-}
+            const queryCount = parseInt(localStorage.getItem('cs_query_count') || '0');
+            if (queryCount >= 1) {
+                alert(currentLang === 'en'
+                    ? 'You have used your free analysis. Email info@claimsolver.co or purchase a Premium Report.'
+                    : 'Ücretsiz analiz hakkınızı kullandınız. Detaylı rapor için info@claimsolver.co adresine yazın veya Premium Rapor satın alın.');
+                return;
+            }
             document.getElementById('contactForm').classList.add('hidden');
             document.getElementById('loadingScreen').classList.remove('hidden');
-            if (currentLang === 'en') {
-    document.getElementById('loadingTitle').textContent = 'Analyzing Your File...';
-    document.getElementById('loadingText').textContent = 'ClaimSolver AI is evaluating';
-    document.getElementById('loadingTimer').textContent = currentLang === 'en' ? '⏱️ This may take 30-60 seconds' : '⏱️ Bu işlem 30-60 saniye sürebilir';
-}
+            document.getElementById('loadingTitle').textContent = currentLang === 'en' ? 'Analyzing Your File...' : 'Dosyanız Analiz Ediliyor...';
+            document.getElementById('loadingText').textContent = currentLang === 'en' ? 'ClaimSolver AI is evaluating' : 'ClaimSolver AI değerlendirme yapıyor';
+            document.getElementById('loadingTimer').textContent = currentLang === 'en' ? '⏱️ This may take 30-60 seconds' : '⏱️ Bu işlem 30-60 saniye sürebilir';
             document.getElementById('loadingScreen').scrollIntoView({ behavior: 'smooth', block: 'center' });
 
             const formData = new FormData(e.target);
@@ -559,23 +714,18 @@ if (queryCount >= 1) {
                     method: 'POST',
                     body: formData
                 });
-
                 const result = await response.json();
-
                 if (result.success && result.analysis) {
                     document.getElementById('loadingScreen').classList.add('hidden');
                     document.getElementById('analysisResult').classList.remove('hidden');
                     localStorage.setItem('cs_query_count', '1');
-document.getElementById('successRate').textContent = (currentLang === 'tr' ? '%' : '') + result.analysis.successProbability + (currentLang === 'en' ? '%' : '');
-document.getElementById('summaryText').textContent = result.analysis.summary;
-
-// Sonuç ekranı dil güncellemesi
-const en = currentLang === 'en';
-document.getElementById('analysisTitle').textContent = en ? 'Analysis Complete' : 'Analiz Tamamlandı';
-document.getElementById('successLabel').textContent = en ? 'Success Probability' : 'Başarı İhtimali';
-document.getElementById('summaryTitle').textContent = en ? '📝 Preliminary Assessment' : '📝 Ön Değerlendirme';
-
-document.getElementById('analysisResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    const en = currentLang === 'en';
+                    document.getElementById('successRate').textContent = (en ? '' : '%') + result.analysis.successProbability + (en ? '%' : '');
+                    document.getElementById('summaryText').textContent = result.analysis.summary;
+                    document.getElementById('analysisTitle').textContent = en ? 'Analysis Complete' : 'Analiz Tamamlandı';
+                    document.getElementById('successLabel').textContent = en ? 'Success Probability' : 'Başarı İhtimali';
+                    document.getElementById('summaryTitle').textContent = en ? '📝 Preliminary Assessment' : '📝 Ön Değerlendirme';
+                    document.getElementById('analysisResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
                 } else if (!result.success && result.error) {
                     document.getElementById('loadingScreen').classList.add('hidden');
                     alert(result.error);
@@ -587,21 +737,21 @@ document.getElementById('analysisResult').scrollIntoView({ behavior: 'smooth', b
                 }
             } catch (error) {
                 document.getElementById('loadingScreen').classList.add('hidden');
-                alert(currentLang === 'tr' ? 'Bağlantı hatası. Lütfen tekrar deneyin.' : 'Connection error. Please try again.');
+                alert(currentLang === 'en' ? 'Connection error. Please try again.' : 'Bağlantı hatası. Lütfen tekrar deneyin.');
                 document.getElementById('contactForm').classList.remove('hidden');
             }
         }
 
         function purchasePremiumReport() {
-            alert(currentLang === 'tr'
-                ? 'Ödeme sistemi çok yakında aktif olacak! Şimdilik info@claimsolver.co adresine email gönderin.'
-                : 'Payment system coming soon! For now, email info@claimsolver.co');
+            alert(currentLang === 'en'
+                ? 'Payment system coming soon! For now, email info@claimsolver.co'
+                : 'Ödeme sistemi çok yakında aktif olacak! Şimdilik info@claimsolver.co adresine email gönderin.');
         }
 
         function purchaseCorporate() {
-            alert(currentLang === 'tr'
-                ? 'Kurumsal paket için info@claimsolver.co adresine email gönderin.'
-                : 'For corporate package, email info@claimsolver.co');
+            alert(currentLang === 'en'
+                ? 'For corporate package, email info@claimsolver.co'
+                : 'Kurumsal paket için info@claimsolver.co adresine email gönderin.');
         }
 
         function resetForm() {
@@ -613,28 +763,8 @@ document.getElementById('analysisResult').scrollIntoView({ behavior: 'smooth', b
             document.getElementById('fileName').textContent = '';
         }
 
-        function openKVKK(e) {
-            e.preventDefault();
-            const en = currentLang === 'en';
-            document.getElementById('kvkkModalTitle').textContent = en ? 'Privacy Policy' : 'KVKK Aydınlatma Metni';
-            document.getElementById('kvkkCloseBtn').textContent = en ? 'Close' : 'Kapat';
-            document.getElementById('kvkkContent').innerHTML = en ? `
-                <p style="color:#475569;line-height:1.75;margin-bottom:1.5rem;">At ClaimSolver, the security of your personal data is our priority.</p>
-                <div class="kvkk-section"><h3 class="kvkk-section-title">1. Data Controller</h3><p class="kvkk-section-text">Your personal data will be processed by ClaimSolver within the scope described below.</p></div>
-                <div class="kvkk-section"><h3 class="kvkk-section-title">2. Processed Personal Data</h3><p class="kvkk-section-text">Name, company, email, phone number, claim file information and uploaded documents.</p></div>
-                <div class="kvkk-section"><h3 class="kvkk-section-title">3. Purpose of Processing</h3><p class="kvkk-section-text">To analyze your claim file, provide consulting services, communicate with you and manage legal processes.</p></div>
-                <div class="kvkk-section"><h3 class="kvkk-section-title">4. Your Rights</h3><p class="kvkk-section-text">You have the right to access, correct, delete your data. Contact info@claimsolver.co to exercise your rights.</p></div>
-            ` : `
-                <p style="color:#475569;line-height:1.75;margin-bottom:1.5rem;">ClaimSolver olarak kişisel verilerinizin güvenliği önceliğimizdir. 6698 sayılı KVKK kapsamında sizi bilgilendiririz:</p>
-                <div class="kvkk-section"><h3 class="kvkk-section-title">1. Veri Sorumlusu</h3><p class="kvkk-section-text">Kişisel verileriniz ClaimSolver tarafından işlenecektir.</p></div>
-                <div class="kvkk-section"><h3 class="kvkk-section-title">2. İşlenen Veriler</h3><p class="kvkk-section-text">Ad-Soyad, şirket, e-posta, telefon, hasar dosyası bilgileri ve yüklenen belgeler.</p></div>
-                <div class="kvkk-section"><h3 class="kvkk-section-title">3. İşleme Amacı</h3><p class="kvkk-section-text">Hasar dosyası analizi, danışmanlık hizmeti, iletişim ve hukuki süreç yönetimi.</p></div>
-                <div class="kvkk-section"><h3 class="kvkk-section-title">4. Haklarınız</h3><p class="kvkk-section-text">KVKK md.11 uyarınca erişim, düzeltme ve silme haklarınız mevcuttur. info@claimsolver.co adresine yazabilirsiniz.</p></div>
-            `;
-            document.getElementById('kvkkModal').classList.add('active');
-        }
-
-        function closeKVKK() { document.getElementById('kvkkModal').classList.remove('active'); }
+        function openKVKK(e) { openModal('privacy', e); }
+        function closeKVKK() { closeLegalModal(); }
         function toggleMobileMenu() { document.querySelector('.nav-links').classList.toggle('mobile-open'); }
 
         document.getElementById('fileInput').addEventListener('change', function(e) {
