@@ -600,6 +600,11 @@
             document.getElementById('fileUploadLabel').textContent = t('📄 Choose File', '📄 Dosya Seç');
             document.getElementById('contactNote').textContent = t('Initial analysis is completely free. Pricing for detailed reports will be determined based on your case.', 'İlk analiz tamamen ücretsizdir. Detaylı raporlar için fiyatlandırma dosyanızın durumuna göre belirlenir.');
             document.getElementById('submitBtn').textContent = t('Submit →', 'Gönder →');
+            document.getElementById('namePlaceholder').placeholder = en ? 'Your Full Name' : 'Adınız Soyadınız';
+document.getElementById('companyPlaceholder').placeholder = en ? 'Company name (optional)' : 'Şirket adı (opsiyonel)';
+document.getElementById('emailPlaceholder').placeholder = en ? 'example@email.com' : 'ornek@email.com';
+document.getElementById('phonePlaceholder').placeholder = en ? '+1 555 000 0000' : '+90 555 000 00 00';
+document.getElementById('descTextarea').placeholder = en ? 'Briefly describe your case...' : 'Dosyanızı kısaca açıklayın...';
             document.getElementById('emailText').textContent = t('Contact via email:', 'E-posta ile iletişim:');
             document.getElementById('footerDesc').textContent = t('AI-powered insurance claim file management and subrogation consulting platform.', 'AI destekli sigorta hasar dosya yönetimi ve rücu danışmanlığı platformu.');
             document.getElementById('footerServicesTitle').textContent = t('Services', 'Hizmetler');
