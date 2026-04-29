@@ -61,6 +61,7 @@
         .ai-text { font-size: 1.125rem; line-height: 1.75; color: #475569; }
         .services { background: #f8fafc; }
         .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
         .service-card { background: white; padding: 2rem; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border-top: 4px solid #1e3a8a; transition: all 0.3s; }
         .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
         .service-title { font-size: 1.25rem; font-weight: bold; color: #0f172a; margin-bottom: 1rem; }
@@ -122,7 +123,7 @@
             .hero-title { font-size: 2rem; }
             .hero-subtitle { font-size: 1.75rem; }
             .hero-stats { grid-template-columns: 1fr; }
-            .about-grid, .services-grid, .footer-grid, .form-grid { grid-template-columns: 1fr; }
+            .about-grid, .services-grid, .footer-grid, .form-grid, .pricing-grid { grid-template-columns: 1fr; }
             .section-title { font-size: 2rem; }
         }
         .hidden { display: none; }
@@ -142,6 +143,7 @@
                 <a href="#home" id="navHome">Home</a>
                 <a href="#about" id="navAbout">About</a>
                 <a href="#services" id="navServices">Services</a>
+                <a href="#pricing" id="navPricing">Pricing</a>
                 <a href="#contact" class="nav-cta" id="navContact">Contact</a>
             </div>
             <button class="lang-btn" onclick="toggleLanguage()">
@@ -191,6 +193,58 @@
             <div class="services-grid" id="servicesGrid"></div>
         </div>
     </section>
+
+    <section id="pricing">
+    <div class="container">
+        <h2 class="section-title heading-font" id="pricingTitle">Pricing</h2>
+        <p class="section-subtitle" id="pricingSubtitle">Transparent pricing, no hidden fees</p>
+        <div class="pricing-grid" style="gap: 2rem; max-width: 1024px; margin: 0 auto;">
+
+            <!-- Premium Report -->
+            <div style="background: white; border: 2px solid #1e3a8a; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+                <div style="font-size: 2rem; margin-bottom: 1rem;">💎</div>
+                <h3 style="font-size: 1.25rem; font-weight: bold; color: #0f172a; margin-bottom: 0.5rem;" id="pPrice1Title">Premium Report</h3>
+                <div style="font-size: 2.25rem; font-weight: bold; color: #1e3a8a; margin-bottom: 1.5rem;" id="pPrice1">$100</div>
+                <ul style="list-style: none; padding: 0; margin: 0 0 2rem;">
+                    <li style="padding: 0.5rem 0; color: #475569; border-bottom: 1px solid #f1f5f9;" id="pFeat1a">→ Full case-specific consulting report</li>
+                    <li style="padding: 0.5rem 0; color: #475569; border-bottom: 1px solid #f1f5f9;" id="pFeat1b">→ How to recover rejected claims</li>
+                    <li style="padding: 0.5rem 0; color: #475569; border-bottom: 1px solid #f1f5f9;" id="pFeat1c">→ Legal basis & precedent decisions</li>
+                    <li style="padding: 0.5rem 0; color: #475569; border-bottom: 1px solid #f1f5f9;" id="pFeat1d">→ Demand letter template</li>
+                    <li style="padding: 0.5rem 0; color: #475569;" id="pFeat1e">→ Delivered within 24 hours</li>
+                </ul>
+                <a href="mailto:info@claimsolver.co?subject=Premium Report Request" style="display: block; text-align: center; padding: 0.875rem; background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); color: white; font-weight: bold; border-radius: 0.5rem; text-decoration: none;" id="pBtn1">Get Started →</a>
+            </div>
+
+            <!-- Subscribe -->
+            <div style="background: #fffbeb; border: 2px solid #d4af37; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); position: relative;">
+                <div style="position: absolute; top: -1rem; left: 50%; transform: translateX(-50%); background: #d4af37; color: #0f172a; font-size: 0.75rem; font-weight: bold; padding: 0.25rem 1rem; border-radius: 999px;" id="pBestBadge">Best Value</div>
+                <div style="font-size: 2rem; margin-bottom: 1rem;">🔁</div>
+                <h3 style="font-size: 1.25rem; font-weight: bold; color: #0f172a; margin-bottom: 0.5rem;" id="pPrice2Title">Subscribe</h3>
+                <div style="font-size: 2.25rem; font-weight: bold; color: #92400e; margin-bottom: 1.5rem;" id="pPrice2">$750<span style="font-size: 1rem; color: #64748b;">/mo</span></div>
+                <ul style="list-style: none; padding: 0; margin: 0 0 2rem;">
+                    <li style="padding: 0.5rem 0; color: #475569; border-bottom: 1px solid #fef3c7;" id="pFeat2a">→ Up to 10 file analyses per month</li>
+                    <li style="padding: 0.5rem 0; color: #475569; border-bottom: 1px solid #fef3c7;" id="pFeat2b">→ Real-time communication during & after claims</li>
+                    <li style="padding: 0.5rem 0; color: #475569;" id="pFeat2c">→ Priority support & dedicated account handling</li>
+                </ul>
+                <a href="mailto:info@claimsolver.co?subject=Subscribe Plan Inquiry" style="display: block; text-align: center; padding: 0.875rem; background: linear-gradient(135deg, #92400e, #d4af37); color: white; font-weight: bold; border-radius: 0.5rem; text-decoration: none;" id="pBtn2">Subscribe →</a>
+            </div>
+
+            <!-- Outsourcing -->
+            <div style="background: white; border: 2px solid #cbd5e1; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+                <div style="font-size: 2rem; margin-bottom: 1rem;">🤝</div>
+                <h3 style="font-size: 1.25rem; font-weight: bold; color: #0f172a; margin-bottom: 0.5rem;" id="pPrice3Title">Outsourcing</h3>
+                <div style="font-size: 2.25rem; font-weight: bold; color: #475569; margin-bottom: 1.5rem;" id="pPrice3">10%</div>
+                <ul style="list-style: none; padding: 0; margin: 0 0 2rem;">
+                    <li style="padding: 0.5rem 0; color: #475569; border-bottom: 1px solid #f1f5f9;" id="pFeat3a">→ Direct negotiation with insurers</li>
+                    <li style="padding: 0.5rem 0; color: #475569; border-bottom: 1px solid #f1f5f9;" id="pFeat3b">→ Full recovery process management</li>
+                    <li style="padding: 0.5rem 0; color: #475569;" id="pFeat3c">→ No upfront cost — pay only on success</li>
+                </ul>
+                <a href="mailto:info@claimsolver.co?subject=Outsourcing Inquiry" style="display: block; text-align: center; padding: 0.875rem; background: #475569; color: white; font-weight: bold; border-radius: 0.5rem; text-decoration: none;" id="pBtn3">Contact Us →</a>
+            </div>
+
+        </div>
+    </div>
+</section>
 
     <section id="contact">
         <div class="container">
@@ -604,6 +658,28 @@
             document.getElementById('navAbout').textContent = t('About', 'Hakkımızda');
             document.getElementById('navServices').textContent = t('Services', 'Hizmetlerimiz');
             document.getElementById('navContact').textContent = t('Contact', 'İletişim');
+            document.getElementById('navPricing').textContent = t('Pricing', 'Fiyatlar');
+            document.getElementById('pricingTitle').textContent = t('Pricing', 'Fiyatlarımız');
+document.getElementById('pricingSubtitle').textContent = t('Transparent pricing, no hidden fees', 'Şeffaf fiyatlandırma, gizli ücret yok');
+document.getElementById('pBestBadge').textContent = t('Best Value', 'En İyi Değer');
+document.getElementById('pPrice1Title').textContent = t('Premium Report', 'Premium Rapor');
+document.getElementById('pFeat1a').textContent = t('→ Full case-specific consulting report', '→ Dosyaya özel danışmanlık raporu');
+document.getElementById('pFeat1b').textContent = t('→ How to recover rejected claims', '→ Ret edilen hasarlar nasıl alınır');
+document.getElementById('pFeat1c').textContent = t('→ Legal basis & precedent decisions', '→ Hukuki dayanak ve emsal kararlar');
+document.getElementById('pFeat1d').textContent = t('→ Demand letter template', '→ Talep mektubu şablonu');
+document.getElementById('pFeat1e').textContent = t('→ Delivered within 24 hours', '→ 24 saat içinde teslim');
+document.getElementById('pBtn1').textContent = t('Get Started →', 'Başlayın →');
+document.getElementById('pPrice2Title').textContent = t('Subscribe', 'Abonelik');
+document.getElementById('pFeat2a').textContent = t('→ Up to 10 file analyses per month', '→ Aylık 10 dosyaya kadar analiz');
+document.getElementById('pFeat2b').textContent = t('→ Real-time communication during & after claims', '→ Hasar anında ve sonrasında anlık iletişim');
+document.getElementById('pFeat2c').textContent = t('→ Priority support & dedicated account handling', '→ Öncelikli destek ve özel hesap yönetimi');
+document.getElementById('pBtn2').textContent = t('Subscribe →', 'Abone Ol →');
+document.getElementById('pPrice3Title').textContent = t('Outsourcing', 'Outsourcing / Başarı Primi');
+document.getElementById('pPrice3').textContent = t('10%', '%10');
+document.getElementById('pFeat3a').textContent = t('→ Direct negotiation with insurers', '→ Sigorta şirketleriyle birebir görüşme');
+document.getElementById('pFeat3b').textContent = t('→ Full recovery process management', '→ Tam rücu süreci yönetimi');
+document.getElementById('pFeat3c').textContent = t('→ No upfront cost — pay only on success', '→ Ön ödeme yok — sadece başarıda ödeme');
+document.getElementById('pBtn3').textContent = t('Contact Us →', 'İletişime Geç →');
             document.getElementById('aboutTitle').textContent = t('About Us', 'Hakkımızda');
             document.getElementById('aboutIntro').textContent = t('ClaimSolver is an independent platform providing specialized claim file management and subrogation consulting services for the insurance sector.', 'ClaimSolver, sigorta sektörüne özel hasar dosyası yönetimi ve rücu danışmanlığı hizmetleri sunan bağımsız bir platformdur.');
             document.getElementById('aboutP1').textContent = t('We intervene in all branches of auto and non-auto claim files, especially in cases deemed uncollectible or unsolvable; we never abandon the process until it reaches resolution.', 'Oto ve oto dışı tüm branşlardaki hasar dosyalarında, özellikle tahsil edilemeyen veya çözümsüz görülen durumlarda devreye girer; süreci sonuca ulaştırana kadar takibi bırakmaz.');
