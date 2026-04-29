@@ -212,7 +212,7 @@
                     <li style="padding: 0.5rem 0; color: #475569; border-bottom: 1px solid #f1f5f9;" id="pFeat1d">→ Demand letter template</li>
                     <li style="padding: 0.5rem 0; color: #475569;" id="pFeat1e">→ Delivered within 24 hours</li>
                 </ul>
-                <a href="mailto:info@claimsolver.co?subject=Premium Report Request" style="display: block; text-align: center; padding: 0.875rem; background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); color: white; font-weight: bold; border-radius: 0.5rem; text-decoration: none;" id="pBtn1">Get Started →</a>
+                <a href="https://claimsolver.gumroad.com/l/premium-report" target="_blank" style="display: block; text-align: center; padding: 0.875rem; background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); color: white; font-weight: bold; border-radius: 0.5rem; text-decoration: none;" id="pBtn1">Get Started →</a>
             </div>
 
             <!-- Subscribe -->
@@ -226,7 +226,7 @@
                     <li style="padding: 0.5rem 0; color: #475569; border-bottom: 1px solid #fef3c7;" id="pFeat2b">→ Real-time communication during & after claims</li>
                     <li style="padding: 0.5rem 0; color: #475569;" id="pFeat2c">→ Priority support & dedicated account handling</li>
                 </ul>
-                <a href="mailto:info@claimsolver.co?subject=Subscribe Plan Inquiry" style="display: block; text-align: center; padding: 0.875rem; background: linear-gradient(135deg, #92400e, #d4af37); color: white; font-weight: bold; border-radius: 0.5rem; text-decoration: none;" id="pBtn2">Subscribe →</a>
+                <a href="https://claimsolver.gumroad.com/l/subscribe" target="_blank" style="display: block; text-align: center; padding: 0.875rem; background: linear-gradient(135deg, #92400e, #d4af37); color: white; font-weight: bold; border-radius: 0.5rem; text-decoration: none;" id="pBtn2">Subscribe →</a>
             </div>
 
             <!-- Outsourcing -->
@@ -858,12 +858,12 @@ document.getElementById('descTextarea').placeholder = en ? 'Briefly describe you
             }
         }
 
-       function purchasePremiumReport() {
-    window.location.href = 'mailto:info@claimsolver.co?subject=Premium Report Request&body=Hello, I would like to purchase a Premium Report. My submission ID is: ' + (window.lastSubmissionId || '');
+function purchasePremiumReport() {
+    window.open('https://claimsolver.gumroad.com/l/premium-report', '_blank');
 }
 
 function purchaseCorporate() {
-    window.location.href = 'mailto:info@claimsolver.co?subject=Subscribe Plan Inquiry&body=Hello, I am interested in the Subscribe plan ($750/mo). Please contact me.';
+    window.open('https://claimsolver.gumroad.com/l/subscribe', '_blank');
 }
 
 function purchaseOutsourcing() {
