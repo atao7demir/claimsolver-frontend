@@ -201,7 +201,7 @@
         <div class="pricing-grid" style="gap: 2rem; max-width: 1024px; margin: 0 auto;">
 
             <!-- Premium Report -->
-            <div style="background: white; border: 2px solid #1e3a8a; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+            <div style="background: white; border: 2px solid #1e3a8a; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: space-between;">
                 <div style="font-size: 2rem; margin-bottom: 1rem;">💎</div>
                 <h3 style="font-size: 1.25rem; font-weight: bold; color: #0f172a; margin-bottom: 0.5rem;" id="pPrice1Title">Premium Report</h3>
                 <div style="font-size: 2.25rem; font-weight: bold; color: #1e3a8a; margin-bottom: 1.5rem;" id="pPrice1">$100</div>
@@ -216,7 +216,7 @@
             </div>
 
             <!-- Subscribe -->
-            <div style="background: #fffbeb; border: 2px solid #d4af37; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); position: relative;">
+            <div style="background: #fffbeb; border: 2px solid #d4af37; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); position: relative; display: flex; flex-direction: column; justify-content: space-between;">
                 <div style="position: absolute; top: -1rem; left: 50%; transform: translateX(-50%); background: #d4af37; color: #0f172a; font-size: 0.75rem; font-weight: bold; padding: 0.25rem 1rem; border-radius: 999px;" id="pBestBadge">Best Value</div>
                 <div style="font-size: 2rem; margin-bottom: 1rem;">🔁</div>
                 <h3 style="font-size: 1.25rem; font-weight: bold; color: #0f172a; margin-bottom: 0.5rem;" id="pPrice2Title">Subscribe</h3>
@@ -230,7 +230,7 @@
             </div>
 
             <!-- Outsourcing -->
-            <div style="background: white; border: 2px solid #cbd5e1; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+            <div style="background: white; border: 2px solid #cbd5e1; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: space-between;">
                 <div style="font-size: 2rem; margin-bottom: 1rem;">🤝</div>
                 <h3 style="font-size: 1.25rem; font-weight: bold; color: #0f172a; margin-bottom: 0.5rem;" id="pPrice3Title">Outsourcing</h3>
                 <div style="font-size: 2.25rem; font-weight: bold; color: #475569; margin-bottom: 1.5rem;" id="pPrice3">10%</div>
@@ -887,6 +887,11 @@ function purchaseOutsourcing() {
             document.getElementById('fileName').textContent = e.target.files.length > 0 ? '✓ ' + e.target.files[0].name : '';
         });
 
+if (window.location.search.includes('reset=1')) {
+    localStorage.removeItem('cs_query_count');
+    window.history.replaceState({}, '', window.location.pathname);
+}
+        
         renderServices();
         renderServiceOptions();
     </script>
